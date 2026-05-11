@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>PSORICURE — Skin science, botanical soul.</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Premium Fonts: Playfair Display (serif/elegant) + Inter (clean modern sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -25,8 +24,8 @@
                         'off-white': '#FAF7F2',
                     },
                     fontFamily: {
-                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-                        sans: ['DM Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'DM Sans', 'system-ui', 'sans-serif'],
                     },
                 }
             }
@@ -59,11 +58,23 @@
         body {
             background: var(--off-white);
             color: var(--ink);
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 300;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 350;
             cursor: none;
             overflow-x: hidden;
             max-width: 100%;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4, .logo, .serif-text, .nav-logo, .footer-logo, .hero-headline, .ingredient-headline, .section-tabs {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .font-serif-custom {
+            font-family: 'Playfair Display', Georgia, serif;
         }
 
         /* Custom cursor */
@@ -107,6 +118,8 @@
             position: relative;
             overflow: hidden;
             white-space: normal;
+            font-family: 'Inter', sans-serif;
+            font-weight: 450;
         }
 
         .announcement-track {
@@ -181,16 +194,18 @@
         }
 
         .hero-headline {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(38px, 5.5vw, 72px);
-            font-weight: 300;
+            font-weight: 350;
             line-height: 1.05;
             color: var(--ink);
             margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
         }
 
         .hero-headline em {
             font-style: italic;
+            font-weight: 400;
         }
 
         .hero-headline .underline-accent {
@@ -203,10 +218,12 @@
         .hero-sub {
             font-size: 13px;
             color: var(--bark);
-            letter-spacing: 0.04em;
+            letter-spacing: 0.02em;
             line-height: 1.7;
             max-width: 320px;
             margin-bottom: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 380;
         }
 
         .pill-btn {
@@ -215,12 +232,14 @@
             border-radius: 999px;
             padding: 10px 28px;
             font-size: 12px;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--ink);
             background: transparent;
             cursor: none;
             transition: background 0.3s, color 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
         }
 
         @media (max-width: 1024px) {
@@ -253,39 +272,14 @@
             justify-content: center;
         }
 
-        .hero-right-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .product-float {
-            animation: float 5s ease-in-out infinite;
-            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
-        }
-
         .section-tabs {
             display: flex;
             gap: 2rem;
             align-items: center;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 28px;
             font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
         @media (max-width: 640px) {
@@ -305,11 +299,13 @@
 
         .tab-active {
             color: var(--ink);
+            font-weight: 500;
         }
 
         .tab-inactive {
             color: var(--warm-gray);
             cursor: none;
+            font-weight: 380;
         }
 
         @media (max-width: 1024px) {
@@ -323,7 +319,7 @@
             transition: color 0.2s;
         }
 
-        /* Updated product card styles with full images and hover overlay */
+        /* Product card styles */
         .product-card {
             background: var(--cream);
             padding: 0;
@@ -400,8 +396,8 @@
             cursor: none;
             transition: all 0.2s ease;
             border-radius: 999px;
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -439,7 +435,8 @@
             font-size: 14px;
             font-weight: 600;
             color: white;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.02em;
+            font-family: 'Inter', sans-serif;
         }
 
         .product-info {
@@ -456,6 +453,8 @@
             color: var(--warm-gray);
             display: block;
             margin-bottom: 0.25rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
         }
 
         .product-tag {
@@ -465,19 +464,24 @@
             color: var(--bark);
             display: block;
             margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 450;
         }
 
         .product-name {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--ink);
             text-align: center;
-            font-weight: 400;
+            font-weight: 500;
             margin-bottom: 0.25rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .product-price {
             font-size: 12px;
             color: var(--warm-gray);
+            font-family: 'Inter', sans-serif;
+            font-weight: 450;
         }
 
         .triptych {
@@ -518,11 +522,11 @@
             left: 2rem;
             transform: translateY(-50%) rotate(-90deg);
             transform-origin: left center;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 32px;
-            font-weight: 300;
+            font-weight: 350;
             color: rgba(245, 239, 228, 0.9);
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             white-space: nowrap;
         }
 
@@ -545,12 +549,13 @@
         }
 
         .ingredient-headline {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(36px, 4vw, 58px);
-            font-weight: 300;
+            font-weight: 350;
             line-height: 1.1;
             color: var(--ink);
             margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
 
         .ingredient-body {
@@ -559,6 +564,8 @@
             color: var(--warm-gray);
             max-width: 360px;
             margin-bottom: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 380;
         }
 
         .ingredient-right {
@@ -583,9 +590,9 @@
         }
 
         .value-number {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 42px;
-            font-weight: 300;
+            font-weight: 400;
             color: var(--tan);
             line-height: 1;
             margin-bottom: 0.5rem;
@@ -593,16 +600,20 @@
 
         .value-label {
             font-size: 12px;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             color: rgba(245, 239, 228, 0.6);
             text-transform: uppercase;
             margin-bottom: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
         }
 
         .value-desc {
             font-size: 13px;
-            line-height: 1.7;
+            line-height: 1.6;
             color: rgba(245, 239, 228, 0.75);
+            font-family: 'Inter', sans-serif;
+            font-weight: 350;
         }
 
         footer {
@@ -615,18 +626,20 @@
         }
 
         .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 20px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--ink);
             margin-bottom: 1rem;
+            font-weight: 450;
         }
 
         .footer-tagline {
             font-size: 12px;
             color: var(--warm-gray);
             line-height: 1.6;
+            font-family: 'Inter', sans-serif;
         }
 
         .footer-col-title {
@@ -635,6 +648,8 @@
             text-transform: uppercase;
             color: var(--warm-gray);
             margin-bottom: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
         }
 
         .footer-links {
@@ -648,6 +663,8 @@
             font-size: 13px;
             color: var(--ink);
             transition: color 0.2s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
         }
 
         .footer-links a:hover {
@@ -662,9 +679,10 @@
             align-items: center;
             font-size: 11px;
             color: var(--warm-gray);
-            letter-spacing: 0.06em;
+            letter-spacing: 0.04em;
             flex-wrap: wrap;
             gap: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .reveal {
@@ -678,21 +696,10 @@
             transform: translateY(0);
         }
 
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
-
-        .reveal-delay-4 {
-            transition-delay: 0.4s;
-        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* Enhanced media queries for full responsiveness */
         @media (max-width: 1024px) {
@@ -701,27 +708,20 @@
                 height: auto;
                 min-height: auto;
             }
-            .hero-right {
-                height: 420px;
-            }
+            .hero-right { height: 420px; }
             .hero-left {
                 padding: 3rem 2.5rem;
                 align-items: center;
                 text-align: center;
                 min-height: 550px;
             }
-            .hero-sub {
-                margin-left: auto;
-                margin-right: auto;
-            }
+            .hero-sub { margin-left: auto; margin-right: auto; }
             .ingredient-left {
                 padding: 3rem 2rem;
                 text-align: center;
                 align-items: center;
             }
-            .ingredient-body {
-                max-width: 100%;
-            }
+            .ingredient-body { max-width: 100%; }
             .values-strip {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 1.5rem;
@@ -744,95 +744,44 @@
                 padding: 2rem 1.5rem;
                 min-height: 480px;
             }
-            .hero-headline {
-                font-size: clamp(32px, 8vw, 50px);
-            }
-            .hero-sub {
-                font-size: 12px;
-                max-width: 90%;
-            }
+            .hero-headline { font-size: clamp(32px, 8vw, 50px); }
+            .hero-sub { font-size: 12px; max-width: 90%; }
             .triptych {
                 grid-template-columns: 1fr;
                 height: auto;
             }
-            .triptych-panel {
-                height: 360px;
-            }
-            .triptych-label {
-                font-size: 28px;
-                left: 1.5rem;
-            }
-            .ingredient-section {
-                grid-template-columns: 1fr;
-            }
-            .ingredient-right {
-                height: 460px;
-            }
+            .triptych-panel { height: 360px; }
+            .triptych-label { font-size: 28px; left: 1.5rem; }
+            .ingredient-section { grid-template-columns: 1fr; }
+            .ingredient-right { height: 460px; }
             .values-strip {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
                 padding: 2.5rem 1.5rem;
             }
-            .value-item {
-                text-align: center;
-            }
-            .section-tabs {
-                gap: 1.2rem;
-                font-size: 20px;
-            }
-            .tab-dot {
-                width: 6px;
-                height: 6px;
-            }
-            #tab-best {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-            #tab-sets {
-                grid-template-columns: 1fr !important;
-            }
-            .product-card {
-                margin-bottom: 0px;
-            }
+            .value-item { text-align: center; }
+            .section-tabs { gap: 1.2rem; font-size: 20px; }
+            .tab-dot { width: 6px; height: 6px; }
+            #tab-best { grid-template-columns: repeat(2, 1fr) !important; }
+            #tab-sets { grid-template-columns: 1fr !important; }
         }
 
         @media (max-width: 480px) {
-            .hero-left {
-                padding: 1.5rem;
-            }
-            .hero-right {
-                height: 340px;
-            }
-            .pill-btn {
-                padding: 8px 24px;
-                font-size: 11px;
-            }
-            .triptych-panel {
-                height: 280px;
-            }
-            .product-info .product-name {
-                font-size: 12px;
-            }
-            .ingredient-left {
-                padding: 2rem 1.25rem;
-            }
+            .hero-left { padding: 1.5rem; }
+            .hero-right { height: 340px; }
+            .pill-btn { padding: 8px 24px; font-size: 11px; }
+            .triptych-panel { height: 280px; }
+            .product-info .product-name { font-size: 12px; }
+            .ingredient-left { padding: 2rem 1.25rem; }
             footer {
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 1.5rem;
             }
-            .footer-logo {
-                font-size: 18px;
-            }
-            .footer-tagline {
-                font-size: 11px;
-            }
-            .hover-buttons {
-                gap: 0.5rem;
-            }
-            .hover-btn {
-                padding: 6px 12px;
-                font-size: 9px;
-            }
+            .footer-logo { font-size: 18px; }
+            .footer-tagline { font-size: 11px; }
+            .hover-buttons { gap: 0.5rem; }
+            .hover-btn { padding: 6px 12px; font-size: 9px; }
         }
 
         a {
@@ -840,7 +789,12 @@
         }
 
         input, button {
-            font-family: inherit;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .journal-article-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 450;
         }
     </style>
 </head>
@@ -849,11 +803,7 @@
 
     <div class="cursor" id="cursor"></div>
 
-
-        <!-- Include header placeholder (kept as original) -->
-    <?php
-    @include('header.php');
-    ?>
+    <?php @include('header.php'); ?>
 
     <div class="announcement">
         <span class="announcement-track">
@@ -863,8 +813,6 @@
                 botanical origin &nbsp;·&nbsp; Cruelty-free &nbsp;·&nbsp; Dermatologist tested</span>
         </span>
     </div>
-
-
 
     <section class="hero">
         <div class="hero-left">
@@ -1020,14 +968,8 @@
                     <div class="product-hover-overlay">
                         <div class="hover-price">€148.00 <span style="text-decoration:line-through;font-size:10px;">€165.00</span></div>
                         <div class="hover-buttons">
-                            <button class="hover-btn hover-btn-cart" onclick="event.preventDefault(); alert('Added to cart: The Calm Ritual Set')">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                                Add to Cart
-                            </button>
-                            <button class="hover-btn hover-btn-fav" onclick="event.preventDefault(); alert('Added to favorites: The Calm Ritual Set')">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                                Save
-                            </button>
+                            <button class="hover-btn hover-btn-cart" onclick="event.preventDefault(); alert('Added to cart: The Calm Ritual Set')">Add to Cart</button>
+                            <button class="hover-btn hover-btn-fav" onclick="event.preventDefault(); alert('Saved to favorites')">Save</button>
                         </div>
                     </div>
                 </div>
@@ -1038,240 +980,50 @@
                     <p class="product-price">€148.00 <span style="text-decoration:line-through;font-size:11px;margin-left:4px;">€165.00</span></p>
                 </div>
             </div>
-
-            <!-- Set 2 -->
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-img" src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&h=600&fit=crop" alt="Skin Reset Programme">
-                    <div class="product-hover-overlay">
-                        <div class="hover-price">€220.00 <span style="text-decoration:line-through;font-size:10px;">€257.00</span></div>
-                        <div class="hover-buttons">
-                            <button class="hover-btn hover-btn-cart" onclick="event.preventDefault(); alert('Added to cart: Skin Reset Programme')">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                                Add to Cart
-                            </button>
-                            <button class="hover-btn hover-btn-fav" onclick="event.preventDefault(); alert('Added to favorites: Skin Reset Programme')">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                                Save
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <div class="product-label">Complete</div>
-                    <div class="product-tag">5-piece routine</div>
-                    <p class="product-name">Skin Reset Programme</p>
-                    <p class="product-price">€220.00 <span style="text-decoration:line-through;font-size:11px;margin-left:4px;">€257.00</span></p>
-                </div>
-            </div>
-
-            <!-- Set 3 -->
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-img" src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=600&h=600&fit=crop" alt="Travel Essentials Duo">
-                    <div class="product-hover-overlay">
-                        <div class="hover-price">€68.00</div>
-                        <div class="hover-buttons">
-                            <button class="hover-btn hover-btn-cart" onclick="event.preventDefault(); alert('Added to cart: Travel Essentials Duo')">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                                Add to Cart
-                            </button>
-                            <button class="hover-btn hover-btn-fav" onclick="event.preventDefault(); alert('Added to favorites: Travel Essentials Duo')">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                                Save
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <div class="product-label">Travel</div>
-                    <div class="product-tag">Mini essentials</div>
-                    <p class="product-name">Travel Essentials Duo</p>
-                    <p class="product-price">€68.00</p>
-                </div>
-            </div>
         </div>
     </section>
 
     <section class="triptych">
-        <div class="triptych-panel">
-            <div class="triptych-img"
-                style="background-image: url('https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800&h=1000&fit=crop');">
-            </div>
-            <div class="triptych-overlay"></div>
-            <span class="triptych-label">face</span>
-            <div class="triptych-content">
-                <a href="#" class="pill-btn pill-btn-light" style="font-size:11px;padding:8px 22px;">shop face</a>
-            </div>
-        </div>
-        <div class="triptych-panel">
-            <div class="triptych-img"
-                style="background-image: url('https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=800&h=1000&fit=crop');">
-            </div>
-            <div class="triptych-overlay"></div>
-            <span class="triptych-label">tools</span>
-            <div class="triptych-content">
-                <a href="#" class="pill-btn pill-btn-light" style="font-size:11px;padding:8px 22px;">shop tools</a>
-            </div>
-        </div>
-        <div class="triptych-panel">
-            <div class="triptych-img"
-                style="background-image: url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&h=1000&fit=crop');">
-            </div>
-            <div class="triptych-overlay"></div>
-            <span class="triptych-label">body</span>
-            <div class="triptych-content">
-                <a href="#" class="pill-btn pill-btn-light" style="font-size:11px;padding:8px 22px;">shop body</a>
-            </div>
-        </div>
+        <div class="triptych-panel"><div class="triptych-img" style="background-image: url('https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800&h=1000&fit=crop');"></div><div class="triptych-overlay"></div><span class="triptych-label">face</span><div class="triptych-content"><a href="#" class="pill-btn pill-btn-light" style="font-size:11px;padding:8px 22px;">shop face</a></div></div>
+        <div class="triptych-panel"><div class="triptych-img" style="background-image: url('https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=800&h=1000&fit=crop');"></div><div class="triptych-overlay"></div><span class="triptych-label">tools</span><div class="triptych-content"><a href="#" class="pill-btn pill-btn-light" style="font-size:11px;padding:8px 22px;">shop tools</a></div></div>
+        <div class="triptych-panel"><div class="triptych-img" style="background-image: url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&h=1000&fit=crop');"></div><div class="triptych-overlay"></div><span class="triptych-label">body</span><div class="triptych-content"><a href="#" class="pill-btn pill-btn-light" style="font-size:11px;padding:8px 22px;">shop body</a></div></div>
     </section>
 
     <section class="ingredient-section">
         <div class="ingredient-left reveal">
-            <p
-                style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:1.5rem;">
-                Ingredient philosophy</p>
-            <h2 class="ingredient-headline">
-                precious<br>ingredients,<br><em>consciously sourced.</em>
-            </h2>
-            <p class="ingredient-body">
-                Every formula begins in the field. We trace each active compound to its origin — from marula groves in
-                Namibia to wild rosehip harvests in Patagonia. Our commitment to purity is non-negotiable.
-            </p>
+            <p style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:1.5rem;font-weight:500;">Ingredient philosophy</p>
+            <h2 class="ingredient-headline">precious<br>ingredients,<br><em>consciously sourced.</em></h2>
+            <p class="ingredient-body">Every formula begins in the field. We trace each active compound to its origin — from marula groves in Namibia to wild rosehip harvests in Patagonia. Our commitment to purity is non-negotiable.</p>
             <a href="#" class="pill-btn">all ingredients</a>
         </div>
-
-        <div class="ingredient-right">
-            <div
-                style="position:relative;z-index:2;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;height:100%;align-content:center;">
-                <img src="https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=300&h=400&fit=crop"
-                    style="width:100%;height:auto;border-radius:12px;object-fit:cover;aspect-ratio:3/4;">
-                <div style="display:flex;flex-direction:column;gap:1rem;">
-                    <img src="https://images.unsplash.com/photo-1595434091143-b375ced5fe5c?w=300&h=200&fit=crop"
-                        style="width:100%;height:auto;border-radius:12px;object-fit:cover;flex:1;">
-                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=300&h=200&fit=crop"
-                        style="width:100%;height:auto;border-radius:12px;object-fit:cover;flex:1;">
-                </div>
-            </div>
-        </div>
+        <div class="ingredient-right"><div style="position:relative;z-index:2;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;height:100%;align-content:center;"><img src="https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=300&h=400&fit=crop" style="width:100%;height:auto;border-radius:12px;object-fit:cover;aspect-ratio:3/4;"><div style="display:flex;flex-direction:column;gap:1rem;"><img src="https://images.unsplash.com/photo-1595434091143-b375ced5fe5c?w=300&h=200&fit=crop" style="width:100%;height:auto;border-radius:12px;object-fit:cover;"><img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=300&h=200&fit=crop" style="width:100%;height:auto;border-radius:12px;object-fit:cover;"></div></div></div>
     </section>
 
     <section class="values-strip reveal">
-        <div class="value-item">
-            <div class="value-number">97%</div>
-            <div class="value-label">Natural origin</div>
-            <div class="value-desc">Every formula audited for botanical purity. No synthetic fragrance, no sulphates, no
-                compromise.</div>
-        </div>
-        <div class="value-item">
-            <div class="value-number">12</div>
-            <div class="value-label">Source countries</div>
-            <div class="value-desc">Wild-harvested and ethically farmed ingredients, traced from field to formula.</div>
-        </div>
-        <div class="value-item">
-            <div class="value-number">0</div>
-            <div class="value-label">Animal testing</div>
-            <div class="value-desc">Certified cruelty-free. Every product validated through clinical human trials only.
-            </div>
-        </div>
+        <div class="value-item"><div class="value-number">97%</div><div class="value-label">Natural origin</div><div class="value-desc">Every formula audited for botanical purity. No synthetic fragrance, no sulphates.</div></div>
+        <div class="value-item"><div class="value-number">12</div><div class="value-label">Source countries</div><div class="value-desc">Wild-harvested and ethically farmed ingredients, traced from field to formula.</div></div>
+        <div class="value-item"><div class="value-number">0</div><div class="value-label">Animal testing</div><div class="value-desc">Certified cruelty-free. Every product validated through clinical human trials only.</div></div>
     </section>
 
     <section style="padding:5rem 3rem;background:var(--cream);">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3rem;" class="reveal">
-            <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;">from the journal</h2>
-            <a href="#"
-                style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--warm-gray);border-bottom:0.5px solid var(--warm-gray);padding-bottom:2px;">all
-                articles</a>
+            <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;letter-spacing:-0.01em;">from the journal</h2>
+            <a href="#" style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--warm-gray);border-bottom:0.5px solid var(--warm-gray);padding-bottom:2px;font-family:'Inter',sans-serif;">all articles</a>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;">
-            <article class="reveal reveal-delay-1">
-                <img src="https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=400&h=300&fit=crop"
-                    style="width:100%;aspect-ratio:4/3;border-radius:4px;margin-bottom:1.25rem;object-fit:cover;">
-                <p
-                    style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem;">
-                    Skin Science</p>
-                <h3
-                    style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;line-height:1.3;margin-bottom:0.75rem;">
-                    What the skin barrier actually does — and how to protect it</h3>
-                <p style="font-size:12px;color:var(--warm-gray);">14 April 2025 · 6 min read</p>
-            </article>
-            <article class="reveal reveal-delay-2">
-                <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=400&h=300&fit=crop"
-                    style="width:100%;aspect-ratio:4/3;border-radius:4px;margin-bottom:1.25rem;object-fit:cover;">
-                <p
-                    style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem;">
-                    Ritual</p>
-                <h3
-                    style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;line-height:1.3;margin-bottom:0.75rem;">
-                    The case for a two-step morning routine — nothing more</h3>
-                <p style="font-size:12px;color:var(--warm-gray);">28 March 2025 · 4 min read</p>
-            </article>
-            <article class="reveal reveal-delay-3">
-                <img src="https://images.unsplash.com/photo-1596621644888-839145c3ed60?w=400&h=300&fit=crop"
-                    style="width:100%;aspect-ratio:4/3;border-radius:4px;margin-bottom:1.25rem;object-fit:cover;">
-                <p
-                    style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem;">
-                    Ingredients</p>
-                <h3
-                    style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;line-height:1.3;margin-bottom:0.75rem;">
-                    Marula oil: ancient remedy, modern proof</h3>
-                <p style="font-size:12px;color:var(--warm-gray);">10 March 2025 · 5 min read</p>
-            </article>
+            <article class="reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=400&h=300&fit=crop" style="width:100%;aspect-ratio:4/3;border-radius:4px;margin-bottom:1.25rem;object-fit:cover;"><p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem;font-family:'Inter',sans-serif;font-weight:500;">Skin Science</p><h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:400;line-height:1.3;margin-bottom:0.75rem;">What the skin barrier actually does — and how to protect it</h3><p style="font-size:12px;color:var(--warm-gray);">14 April 2025 · 6 min read</p></article>
+            <article class="reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=400&h=300&fit=crop" style="width:100%;aspect-ratio:4/3;border-radius:4px;margin-bottom:1.25rem;object-fit:cover;"><p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem;font-family:'Inter',sans-serif;font-weight:500;">Ritual</p><h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:400;line-height:1.3;margin-bottom:0.75rem;">The case for a two-step morning routine — nothing more</h3><p style="font-size:12px;color:var(--warm-gray);">28 March 2025 · 4 min read</p></article>
+            <article class="reveal reveal-delay-3"><img src="https://images.unsplash.com/photo-1596621644888-839145c3ed60?w=400&h=300&fit=crop" style="width:100%;aspect-ratio:4/3;border-radius:4px;margin-bottom:1.25rem;object-fit:cover;"><p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem;font-family:'Inter',sans-serif;font-weight:500;">Ingredients</p><h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:400;line-height:1.3;margin-bottom:0.75rem;">Marula oil: ancient remedy, modern proof</h3><p style="font-size:12px;color:var(--warm-gray);">10 March 2025 · 5 min read</p></article>
         </div>
     </section>
 
     <footer>
-        <div>
-            <div class="footer-logo">Psoricure</div>
-            <p class="footer-tagline">Skin science rooted<br>in botanical tradition.</p>
-        </div>
-        <div>
-            <p class="footer-col-title">Shop</p>
-            <ul class="footer-links">
-                <li><a href="#">face care</a></li>
-                <li><a href="#">body care</a></li>
-                <li><a href="#">beauty tools</a></li>
-                <li><a href="#">sets & rituals</a></li>
-                <li><a href="#">new arrivals</a></li>
-            </ul>
-        </div>
-        <div>
-            <p class="footer-col-title">Learn</p>
-            <ul class="footer-links">
-                <li><a href="#">journal</a></li>
-                <li><a href="#">ingredients</a></li>
-                <li><a href="#">skin types</a></li>
-                <li><a href="#">about us</a></li>
-                <li><a href="#">sustainability</a></li>
-            </ul>
-        </div>
-        <div>
-            <p class="footer-col-title">Support</p>
-            <ul class="footer-links">
-                <li><a href="#">contact</a></li>
-                <li><a href="#">shipping & returns</a></li>
-                <li><a href="#">faq</a></li>
-                <li><a href="#">store locator</a></li>
-            </ul>
-            <div style="margin-top:1.5rem;">
-                <p class="footer-col-title" style="margin-bottom:0.75rem;">Newsletter</p>
-                <div style="display:flex;border-bottom:0.5px solid var(--sand);">
-                    <input type="email" placeholder="your@email.com"
-                        style="background:transparent;border:none;outline:none;font-size:12px;color:var(--ink);font-family:'DM Sans',sans-serif;flex:1;padding:6px 0;" />
-                    <button
-                        style="background:transparent;border:none;cursor:pointer;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--bark);padding:6px 0;">→</button>
-                </div>
-            </div>
-        </div>
+        <div><div class="footer-logo">Psoricure</div><p class="footer-tagline">Skin science rooted<br>in botanical tradition.</p></div>
+        <div><p class="footer-col-title">Shop</p><ul class="footer-links"><li><a href="#">face care</a></li><li><a href="#">body care</a></li><li><a href="#">beauty tools</a></li><li><a href="#">sets & rituals</a></li><li><a href="#">new arrivals</a></li></ul></div>
+        <div><p class="footer-col-title">Learn</p><ul class="footer-links"><li><a href="#">journal</a></li><li><a href="#">ingredients</a></li><li><a href="#">skin types</a></li><li><a href="#">about us</a></li><li><a href="#">sustainability</a></li></ul></div>
+        <div><p class="footer-col-title">Support</p><ul class="footer-links"><li><a href="#">contact</a></li><li><a href="#">shipping & returns</a></li><li><a href="#">faq</a></li><li><a href="#">store locator</a></li></ul><div style="margin-top:1.5rem;"><p class="footer-col-title" style="margin-bottom:0.75rem;">Newsletter</p><div style="display:flex;border-bottom:0.5px solid var(--sand);"><input type="email" placeholder="your@email.com" style="background:transparent;border:none;outline:none;font-size:12px;color:var(--ink);flex:1;padding:6px 0;"><button style="background:transparent;border:none;cursor:pointer;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--bark);padding:6px 0;">→</button></div></div></div>
     </footer>
-    <div class="footer-bottom">
-        <span>© 2025 Psoricure. All rights reserved.</span>
-        <span style="display:flex;gap:1.5rem;">
-            <a href="#" style="color:var(--warm-gray);">privacy</a>
-            <a href="#" style="color:var(--warm-gray);">terms</a>
-            <a href="#" style="color:var(--warm-gray);">cookies</a>
-        </span>
-    </div>
+    <div class="footer-bottom"><span>© 2025 Psoricure. All rights reserved.</span><span style="display:flex;gap:1.5rem;"><a href="#" style="color:var(--warm-gray);">privacy</a><a href="#" style="color:var(--warm-gray);">terms</a><a href="#" style="color:var(--warm-gray);">cookies</a></span></div>
 
     <script>
         const cursor = document.getElementById('cursor');

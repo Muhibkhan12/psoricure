@@ -849,6 +849,12 @@
 
     <div class="cursor" id="cursor"></div>
 
+
+        <!-- Include header placeholder (kept as original) -->
+    <?php
+    @include('header.php');
+    ?>
+
     <div class="announcement">
         <span class="announcement-track">
             <span>Free shipping on orders over €45 &nbsp;·&nbsp; Clinically validated formulas &nbsp;·&nbsp; 100%
@@ -858,10 +864,7 @@
         </span>
     </div>
 
-    <!-- Include header placeholder (kept as original) -->
-    <?php
-    @include('header.php');
-    ?>
+
 
     <section class="hero">
         <div class="hero-left">

@@ -1,10 +1,69 @@
+<style>
+    /* Nav */
+        nav {
+            background: var(--off-white);
+            border-bottom: 0.5px solid var(--sand);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 3rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: var(--ink);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            color: var(--warm-gray);
+        }
+
+        .nav-links a:hover {
+            color: var(--ink);
+            transition: color 0.2s;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-icons svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--warm-gray);
+            fill: none;
+            stroke-width: 1.5;
+            cursor: none;
+        }
+
+        .nav-icons svg:hover {
+            stroke: var(--ink);
+            transition: stroke 0.2s;
+        }
+</style>
+    
     <nav>
         <div class="nav-logo">Psoricure</div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="#">journal</a></li>
-            <li><a href="#">about</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="product.php">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
         <div class="nav-icons">
             <span style="font-size:11px;letter-spacing:0.08em;color:var(--warm-gray);">€ EUR</span>

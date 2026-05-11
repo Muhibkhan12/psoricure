@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>PSORICURE — Skin science, botanical soul.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,6 +53,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
@@ -61,6 +62,8 @@
             font-family: 'DM Sans', sans-serif;
             font-weight: 300;
             cursor: none;
+            overflow-x: hidden;
+            max-width: 100%;
         }
 
         /* Custom cursor */
@@ -83,6 +86,15 @@
             background: var(--tan);
         }
 
+        @media (max-width: 1024px) {
+            body {
+                cursor: auto;
+            }
+            .cursor {
+                display: none;
+            }
+        }
+
         /* Announcement bar */
         .announcement {
             background: var(--ink);
@@ -94,6 +106,7 @@
             padding: 10px 1rem;
             position: relative;
             overflow: hidden;
+            white-space: normal;
         }
 
         .announcement-track {
@@ -107,67 +120,17 @@
             from {
                 transform: translateX(0);
             }
-
             to {
                 transform: translateX(-50%);
             }
         }
 
-        /* Nav */
-        nav {
-            background: var(--off-white);
-            border-bottom: 0.5px solid var(--sand);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 0 3rem;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            font-weight: 400;
-            letter-spacing: 0.2em;
-            color: var(--ink);
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            font-size: 12px;
-            letter-spacing: 0.08em;
-            color: var(--warm-gray);
-        }
-
-        .nav-links a:hover {
-            color: var(--ink);
-            transition: color 0.2s;
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .nav-icons svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--warm-gray);
-            fill: none;
-            stroke-width: 1.5;
-            cursor: none;
-        }
-
-        .nav-icons svg:hover {
-            stroke: var(--ink);
-            transition: stroke 0.2s;
+        @media (max-width: 640px) {
+            .announcement-track {
+                animation: ticker 28s linear infinite;
+                gap: 2rem;
+                font-size: 9px;
+            }
         }
 
         /* Hero */
@@ -219,7 +182,7 @@
 
         .hero-headline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(42px, 5.5vw, 72px);
+            font-size: clamp(38px, 5.5vw, 72px);
             font-weight: 300;
             line-height: 1.05;
             color: var(--ink);
@@ -258,6 +221,12 @@
             background: transparent;
             cursor: none;
             transition: background 0.3s, color 0.3s;
+        }
+
+        @media (max-width: 1024px) {
+            .pill-btn {
+                cursor: pointer;
+            }
         }
 
         .pill-btn:hover {
@@ -319,6 +288,13 @@
             font-weight: 400;
         }
 
+        @media (max-width: 640px) {
+            .section-tabs {
+                font-size: 22px;
+                gap: 1.5rem;
+            }
+        }
+
         .tab-dot {
             width: 8px;
             height: 8px;
@@ -334,6 +310,12 @@
         .tab-inactive {
             color: var(--warm-gray);
             cursor: none;
+        }
+
+        @media (max-width: 1024px) {
+            .tab-inactive {
+                cursor: pointer;
+            }
         }
 
         .tab-inactive:hover {
@@ -353,6 +335,12 @@
             cursor: none;
             position: relative;
             overflow: hidden;
+        }
+
+        @media (max-width: 1024px) {
+            .product-card {
+                cursor: pointer;
+            }
         }
 
         .product-card:hover {
@@ -399,6 +387,7 @@
             display: flex;
             gap: 0.75rem;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .hover-btn {
@@ -416,6 +405,12 @@
             display: flex;
             align-items: center;
             gap: 6px;
+        }
+
+        @media (max-width: 1024px) {
+            .hover-btn {
+                cursor: pointer;
+            }
         }
 
         .hover-btn-cart {
@@ -487,7 +482,7 @@
 
         .triptych {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             height: 520px;
         }
 
@@ -615,7 +610,7 @@
             border-top: 0.5px solid var(--sand);
             padding: 3rem;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
         }
 
@@ -652,11 +647,11 @@
         .footer-links a {
             font-size: 13px;
             color: var(--ink);
+            transition: color 0.2s;
         }
 
         .footer-links a:hover {
             color: var(--bark);
-            transition: color 0.2s;
         }
 
         .footer-bottom {
@@ -668,6 +663,8 @@
             font-size: 11px;
             color: var(--warm-gray);
             letter-spacing: 0.06em;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .reveal {
@@ -697,56 +694,153 @@
             transition-delay: 0.4s;
         }
 
-        @media (max-width: 768px) {
+        /* Enhanced media queries for full responsiveness */
+        @media (max-width: 1024px) {
             .hero {
                 grid-template-columns: 1fr;
                 height: auto;
+                min-height: auto;
             }
-
             .hero-right {
-                height: 300px;
+                height: 420px;
             }
+            .hero-left {
+                padding: 3rem 2.5rem;
+                align-items: center;
+                text-align: center;
+                min-height: 550px;
+            }
+            .hero-sub {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .ingredient-left {
+                padding: 3rem 2rem;
+                text-align: center;
+                align-items: center;
+            }
+            .ingredient-body {
+                max-width: 100%;
+            }
+            .values-strip {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+                padding: 3rem 2rem;
+            }
+            footer {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 2rem;
+                gap: 2rem;
+            }
+            .footer-bottom {
+                padding: 1rem 2rem;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
 
+        @media (max-width: 768px) {
+            .hero-left {
+                padding: 2rem 1.5rem;
+                min-height: 480px;
+            }
+            .hero-headline {
+                font-size: clamp(32px, 8vw, 50px);
+            }
+            .hero-sub {
+                font-size: 12px;
+                max-width: 90%;
+            }
             .triptych {
                 grid-template-columns: 1fr;
                 height: auto;
             }
-
             .triptych-panel {
-                height: 300px;
+                height: 360px;
             }
-
+            .triptych-label {
+                font-size: 28px;
+                left: 1.5rem;
+            }
             .ingredient-section {
                 grid-template-columns: 1fr;
             }
-
             .ingredient-right {
-                height: 360px;
+                height: 460px;
             }
-
             .values-strip {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 2.5rem 1.5rem;
             }
-
-            footer {
-                grid-template-columns: 1fr 1fr;
+            .value-item {
+                text-align: center;
             }
-
-            nav {
-                padding: 0 1.5rem;
+            .section-tabs {
+                gap: 1.2rem;
+                font-size: 20px;
             }
+            .tab-dot {
+                width: 6px;
+                height: 6px;
+            }
+            #tab-best {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            #tab-sets {
+                grid-template-columns: 1fr !important;
+            }
+            .product-card {
+                margin-bottom: 0px;
+            }
+        }
 
+        @media (max-width: 480px) {
             .hero-left {
-                padding: 2rem;
+                padding: 1.5rem;
             }
-
+            .hero-right {
+                height: 340px;
+            }
+            .pill-btn {
+                padding: 8px 24px;
+                font-size: 11px;
+            }
+            .triptych-panel {
+                height: 280px;
+            }
+            .product-info .product-name {
+                font-size: 12px;
+            }
             .ingredient-left {
-                padding: 3rem 2rem;
+                padding: 2rem 1.25rem;
+            }
+            footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .footer-logo {
+                font-size: 18px;
+            }
+            .footer-tagline {
+                font-size: 11px;
+            }
+            .hover-buttons {
+                gap: 0.5rem;
+            }
+            .hover-btn {
+                padding: 6px 12px;
+                font-size: 9px;
             }
         }
 
         a {
             text-decoration: none;
+        }
+
+        input, button {
+            font-family: inherit;
         }
     </style>
 </head>
@@ -764,10 +858,11 @@
         </span>
     </div>
 
-
-<?php
+    <!-- Include header placeholder (kept as original) -->
+    <?php
     @include('header.php');
-?>
+    ?>
+
     <section class="hero">
         <div class="hero-left">
             <div class="hero-img-bg"></div>
@@ -798,7 +893,7 @@
         </div>
     </section>
 
-    <!-- Best Sellers Section with restored images -->
+    <!-- Best Sellers Section -->
     <section style="padding:5rem 3rem;background:var(--off-white);">
         <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;" class="reveal">
             <div class="tab-dot"></div>
@@ -1161,7 +1256,7 @@
                     <input type="email" placeholder="your@email.com"
                         style="background:transparent;border:none;outline:none;font-size:12px;color:var(--ink);font-family:'DM Sans',sans-serif;flex:1;padding:6px 0;" />
                     <button
-                        style="background:transparent;border:none;cursor:none;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--bark);padding:6px 0;">→</button>
+                        style="background:transparent;border:none;cursor:pointer;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--bark);padding:6px 0;">→</button>
                 </div>
             </div>
         </div>
@@ -1177,14 +1272,18 @@
 
     <script>
         const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-        document.querySelectorAll('a, button, [class*="product-card"], [class*="triptych-panel"], svg, img').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-        });
+        if (window.innerWidth > 1024) {
+            document.addEventListener('mousemove', e => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            document.querySelectorAll('a, button, [class*="product-card"], [class*="triptych-panel"], svg, img').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+            });
+        } else {
+            if(cursor) cursor.style.display = 'none';
+        }
 
         function switchTab(el, tab) {
             document.querySelectorAll('[data-tab]').forEach(t => {

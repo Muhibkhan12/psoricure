@@ -102,23 +102,9 @@
     </div>
 </div>
 
-<!-- Navigation -->
-<nav class="sticky top-0 z-50 bg-[#FAF7F2] border-b border-[#E2D5C3] px-6 md:px-12 py-4 flex items-center justify-between">
-    <div class="font-serif text-xl md:text-2xl tracking-[0.2em] text-[#1C1917] uppercase">Psoricure</div>
-    <ul class="hidden md:flex gap-8 text-xs tracking-[0.08em] text-[#9A8F83]">
-        <li><a href="#" class="hover:text-[#1C1917] transition">shop</a></li>
-        <li><a href="#" class="hover:text-[#1C1917] transition">rituals</a></li>
-        <li><a href="#" class="hover:text-[#1C1917] transition">journal</a></li>
-        <li><a href="#" class="hover:text-[#1C1917] transition">about</a></li>
-    </ul>
-    <div class="flex gap-5 items-center">
-        <span class="text-[11px] tracking-[0.08em] text-[#9A8F83] hidden sm:block">€ EUR</span>
-        <svg class="w-[18px] h-[18px] stroke-[#9A8F83] stroke-[1.5] hover:stroke-[#1C1917] transition" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
-        <svg class="w-[18px] h-[18px] stroke-[#9A8F83] stroke-[1.5] hover:stroke-[#1C1917] transition" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        <svg class="w-[18px] h-[18px] stroke-[#9A8F83] stroke-[1.5] hover:stroke-[#1C1917] transition" viewBox="0 0 24 24" fill="none"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    </div>
-</nav>
-
+<?
+    @include('header.php');
+?>
 <!-- HERO SECTION (compact, not full height, with video/image template) -->
 <section class="relative w-full overflow-hidden bg-[#1A1714]">
     <!-- Background Video / Image Template -->

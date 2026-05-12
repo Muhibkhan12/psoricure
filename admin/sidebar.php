@@ -1,5 +1,5 @@
 <?php
-// sidebar-header.php - Responsive version
+// sidebar-header.php - Responsive version with linkable navigation
 ?>
 <style>
   /* Mobile Menu Toggle Button */
@@ -49,7 +49,7 @@
     left: 0;
     top: 0;
     overflow: hidden;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     z-index: 100;
     transition: transform 0.3s ease;
   }
@@ -69,12 +69,14 @@
     border-bottom: 0.5px solid rgba(255,255,255,0.08);
   }
   .logo-mark {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
     font-size: 18px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: #F5EFE4;
-    font-weight: 400;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
   }
   .logo-sub {
     font-size: 10px;
@@ -82,6 +84,7 @@
     text-transform: uppercase;
     color: rgba(196,168,130,0.6);
     margin-top: 3px;
+    font-weight: 400;
   }
   .sidebar-nav {
     flex: 1;
@@ -97,6 +100,7 @@
     text-transform: uppercase;
     color: rgba(154,143,131,0.5);
     padding: 14px 12px 6px;
+    font-weight: 500;
   }
   .nav-item {
     display: flex;
@@ -106,9 +110,11 @@
     border-radius: 6px;
     color: rgba(245,239,228,0.55);
     font-size: 13px;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.2s;
     position: relative;
+    text-decoration: none;
   }
   .nav-item:hover {
     background: rgba(255,255,255,0.05);
@@ -143,7 +149,7 @@
     font-size: 10px;
     padding: 2px 6px;
     border-radius: 10px;
-    font-weight: 400;
+    font-weight: 500;
   }
   .sidebar-user {
     padding: 16px;
@@ -160,7 +166,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 14px;
     color: #F5EFE4;
     flex-shrink: 0;
@@ -168,12 +174,13 @@
   .user-name {
     font-size: 12px;
     color: #F5EFE4;
-    font-weight: 400;
+    font-weight: 500;
   }
   .user-role {
     font-size: 10px;
     color: rgba(196,168,130,0.6);
     letter-spacing: 0.06em;
+    font-weight: 400;
   }
   .sidebar::-webkit-scrollbar {
     width: 4px;
@@ -196,7 +203,7 @@
     justify-content: space-between;
     padding: 0 2rem;
     flex-shrink: 0;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     position: fixed;
     top: 0;
     left: 240px;
@@ -209,15 +216,16 @@
     flex-direction: column;
   }
   .page-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 500;
     color: #1C1917;
   }
   .page-breadcrumb {
     font-size: 11px;
     color: #9A8F83;
     letter-spacing: 0.05em;
+    font-weight: 400;
   }
   .topbar-right {
     display: flex;
@@ -237,8 +245,9 @@
     background: none;
     border: none;
     outline: none;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
+    font-weight: 400;
     color: #1C1917;
     width: 160px;
   }
@@ -299,7 +308,8 @@
     background: #FAF7F2;
     cursor: pointer;
     transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
   }
   .pill-action:hover {
     background: #1C1917;
@@ -393,61 +403,61 @@
 </button>
 
 <section class="sidebar" id="sidebar">
-  <div class="sidebar-logo">
+  <a href="dashboard.php" class="sidebar-logo" style="text-decoration: none;">
     <div class="logo-mark">Psoricure</div>
     <div class="logo-sub">Admin Console</div>
-  </div>
+  </a>
 
   <nav class="sidebar-nav">
     <div class="nav-section-label">Overview</div>
-    <div class="nav-item active">
+    <a href="dashboard.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       Dashboard
-    </div>
-    <div class="nav-item">
+    </a>
+    <a href="analytics.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'analytics.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 3h18v4H3z"/><path d="M3 11h18v2H3z"/><path d="M3 17h18v4H3z"/></svg>
       Analytics
-    </div>
+    </a>
 
     <div class="nav-section-label">Commerce</div>
-    <div class="nav-item">
+    <a href="orders.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'orders.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       Orders
       <span class="nav-badge">12</span>
-    </div>
-    <div class="nav-item">
+    </a>
+    <a href="products.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'products.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
       Products
-    </div>
-    <div class="nav-item">
+    </a>
+    <a href="customers.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'customers.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       Customers
-    </div>
-    <div class="nav-item">
+    </a>
+    <a href="revenue.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'revenue.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       Revenue
-    </div>
+    </a>
 
     <div class="nav-section-label">Content</div>
-    <div class="nav-item">
+    <a href="journal.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'journal.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       Journal
       <span class="nav-badge">3</span>
-    </div>
-    <div class="nav-item">
+    </a>
+    <a href="media.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'media.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
       Media
-    </div>
-    <div class="nav-item">
+    </a>
+    <a href="marketing.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'marketing.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
       Marketing
-    </div>
+    </a>
 
     <div class="nav-section-label">System</div>
-    <div class="nav-item">
+    <a href="settings.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>">
       <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
       Settings
-    </div>
+    </a>
   </nav>
 
   <div class="sidebar-user">
@@ -461,8 +471,28 @@
 
 <section class="topbar">
   <div class="topbar-left">
-    <div class="page-title">Dashboard</div>
-    <div class="page-breadcrumb">May 2026 &nbsp;·&nbsp; All stores</div>
+    <div class="page-title">
+      <?php
+        // Dynamic page title based on current file
+        $currentPage = basename($_SERVER['PHP_SELF'], '.php');
+        $titles = [
+          'dashboard' => 'Dashboard',
+          'analytics' => 'Analytics',
+          'orders' => 'Orders',
+          'products' => 'Products',
+          'customers' => 'Customers',
+          'revenue' => 'Revenue',
+          'journal' => 'Journal',
+          'media' => 'Media',
+          'marketing' => 'Marketing',
+          'settings' => 'Settings'
+        ];
+        echo ucfirst($titles[$currentPage] ?? 'Dashboard');
+      ?>
+    </div>
+    <div class="page-breadcrumb">
+      <?php echo date('F Y'); ?> &nbsp;·&nbsp; All stores
+    </div>
   </div>
   <div class="topbar-right">
     <div class="search-box">

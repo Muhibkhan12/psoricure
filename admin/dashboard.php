@@ -1,5 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    
+
 <?php
-// dashboard-main.php - Responsive main content area
+// dashboard-main.php - Responsive main content area with updated fonts
 ?>
 <section class="main-content">
   <style>
@@ -80,7 +91,7 @@
     .kpi-card.k3::after { background: linear-gradient(90deg, var(--warning), #D4A855); }
     .kpi-card.k4::after { background: linear-gradient(90deg, var(--bark-dark), var(--bark)); }
     .kpi-header { display: flex; justify-content: space-between; align-items: flex-start; }
-    .kpi-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); }
+    .kpi-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); font-weight: 500; }
     .kpi-icon-wrap {
       width: 32px; height: 32px;
       border-radius: 8px;
@@ -90,9 +101,9 @@
     }
     .kpi-icon-wrap svg { width: 15px; height: 15px; stroke-width: 1.5; fill: none; }
     .kpi-value {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
       font-size: 36px;
-      font-weight: 400;
+      font-weight: 500;
       color: var(--ink);
       line-height: 1;
     }
@@ -101,11 +112,11 @@
       font-size: 11px;
       padding: 2px 7px;
       border-radius: 10px;
-      font-weight: 400;
+      font-weight: 500;
     }
     .kpi-change.up { background: var(--success-bg); color: var(--success); }
     .kpi-change.down { background: var(--danger-bg); color: var(--danger); }
-    .kpi-period { font-size: 11px; color: var(--warm-gray-light); }
+    .kpi-period { font-size: 11px; color: var(--warm-gray-light); font-weight: 400; }
 
     /* Middle Row - Responsive */
     .mid-row {
@@ -128,11 +139,11 @@
       gap: 1rem;
     }
     .card-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
       font-size: 18px;
-      font-weight: 400;
+      font-weight: 500;
     }
-    .card-subtitle { font-size: 11px; color: var(--warm-gray); margin-top: 2px; }
+    .card-subtitle { font-size: 11px; color: var(--warm-gray); margin-top: 2px; font-weight: 400; }
     .time-tabs { display: flex; gap: 2px; background: var(--sand-light); border-radius: 6px; padding: 3px; flex-wrap: wrap; }
     .time-tab {
       font-size: 11px;
@@ -141,11 +152,12 @@
       cursor: pointer;
       color: var(--warm-gray);
       transition: all 0.2s;
+      font-weight: 500;
     }
     .time-tab.active { background: var(--off-white); color: var(--ink); box-shadow: 0 1px 3px rgba(28,25,23,0.08); }
     .chart-wrap svg { width: 100%; height: auto; }
     .chart-legend { display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
-    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--warm-gray); }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--warm-gray); font-weight: 400; }
     .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 
     /* Bottom Row - Responsive */
@@ -165,13 +177,16 @@
       padding: 10px 1.5rem;
       text-align: left;
       background: var(--sand-light);
+      font-weight: 600;
+      letter-spacing: 0.05em;
     }
     .data-table td {
       padding: 12px 1.5rem;
       font-size: 12px;
       border-bottom: 0.5px solid rgba(226,213,195,0.5);
+      font-weight: 400;
     }
-    .order-id { color: var(--bark); font-size: 11px; }
+    .order-id { color: var(--bark); font-size: 11px; font-weight: 500; }
     .status-pill {
       display: inline-flex;
       align-items: center;
@@ -180,6 +195,7 @@
       padding: 3px 8px;
       border-radius: 10px;
       white-space: nowrap;
+      font-weight: 500;
     }
     .status-pill::before { content: ''; width: 5px; height: 5px; border-radius: 50%; }
     .status-pill.shipped { background: var(--success-bg); color: var(--success); }
@@ -202,8 +218,50 @@
       background: var(--off-white);
       cursor: pointer;
       white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
     }
     .pill-action:hover { background: var(--ink); color: var(--cream); }
+
+    /* Activity Feed */
+    .activity-card {
+      background: var(--cream);
+      border: 0.5px solid var(--sand);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+    }
+    .activity-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 0.5px solid rgba(226,213,195,0.5);
+    }
+    .activity-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .activity-text { font-size: 12px; line-height: 1.5; font-weight: 400; }
+    .activity-text strong { font-weight: 600; }
+    .activity-time { font-size: 10px; color: var(--warm-gray-light); margin-top: 3px; font-weight: 400; }
+
+    /* Top Products */
+    .product-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 0.5px solid rgba(226,213,195,0.5);
+    }
+    .product-thumb {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      background: var(--sand-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-info { flex: 1; }
+    .product-row-name { font-size: 12px; font-weight: 500; }
+    .product-row-cat { font-size: 10px; color: var(--warm-gray); text-transform: uppercase; font-weight: 400; letter-spacing: 0.05em; }
+    .product-row-revenue { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 500; }
+    .product-row-units { font-size: 10px; color: var(--warm-gray); font-weight: 400; }
 
     .fade-in { animation: fadeIn 0.5s ease both; }
     @keyframes fadeIn {
@@ -343,11 +401,11 @@
     <div class="bottom-row fade-in">
       <div class="table-card">
         <div class="card-header"><div><div class="card-title">Recent Orders</div><div class="card-subtitle">Last 24 hours</div></div><button class="pill-action">View all</button></div>
-        <table class="data-table"><thead><tr><th>Order</th><th>Customer</th><th>Product</th><th>Amount</th><th>Status</th></tr></thead><tbody><tr><td><span class="order-id">PSC-4821</span></td><td>Layla Hassan</td><td>Calm Restore Serum</td><td>€58.00</td><td><span class="status-pill shipped">shipped</span></td></tr><tr><td><span class="order-id">PSC-4820</span></td><td>Nadia Farooq</td><td>Barrier Shield Mist</td><td>€42.00</td><td><span class="status-pill processing">processing</span></td></tr><tr><td><span class="order-id">PSC-4819</span></td><td>Imran Siddiq</td><td>The Calm Ritual Set</td><td>€148.00</td><td><span class="status-pill shipped">shipped</span></td></tr><tr><td><span class="order-id">PSC-4818</span></td><td>Sara Qureshi</td><td>Radiance Day Oil</td><td>€65.00</td><td><span class="status-pill pending">pending</span></td></tr><tr><td><span class="order-id">PSC-4817</span></td><td>Omar Raza</td><td>Night Renewal Balm</td><td>€74.00</td><td><span class="status-pill returned">returned</span></td></tr><tr><td><span class="order-id">PSC-4816</span></td><td>Hina Malik</td><td>Travel Essentials Duo</td><td>€68.00</td><td><span class="status-pill shipped">shipped</span></td></tr></tbody></table>
+        <table class="data-table"><thead><tr><th>Order</th><th>Customer</th><th>Product</th><th>Amount</th><th>Status</th></tr></thead><tbody><tr><td><span class="order-id">PSC-4821</span></td><td>Layla Hassan</td><td>Calm Restore Serum</td><td>€58.00</td><td><span class="status-pill shipped">shipped</span></td></tr><tr><td><span class="order-id">PSC-4820</span></td><td>Nadia Farooq</td><td>Barrier Shield Mist</td><td>€42.00</td><td><span class="status-pill processing">processing</span></td></tr><tr><td><span class="order-id">PSC-4819</span></td><td>Imran Siddiq</td><td>The Calm Ritual Set</td><td>€148.00</td><td><span class="status-pill shipped">shipped</span></td></tr><tr><td><span class="order-id">PSC-4818</span></td><td>Sara Qureshi</td><td>Radiance Day Oil</td><td>€65.00</td><td><span class="status-pill pending">pending</span></td></tr><tr><td><span class="order-id">PSC-4817</span></td><td>Omar Raza</td><td>Night Renewal Balm</td><td>€74.00</td><td><span class="status-pill returned">returned</span></td></tr><tr><td><span class="order-id">PSC-4816</span></td><td>Hina Malik</td><td>Travel Essentials Duo</td><td>€68.00</td><td><span class="status-pill shipped">shipped</span></td></tr></tbody>
+        </table>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:1rem;">
-
         <div class="chart-card" style="padding:1.25rem 1.5rem;">
           <div class="card-header" style="margin-bottom:1rem;"><div class="card-title">Top Products</div><div class="card-subtitle">By revenue this month</div></div>
           <div><div class="product-row"><div class="product-thumb"><svg width="24" height="40" viewBox="0 0 80 160"><rect x="14" y="28" width="52" height="118" rx="6" fill="#C4A882" opacity="0.85"/><rect x="30" y="10" width="20" height="20" rx="3" fill="#C4A882" opacity="0.6"/></svg></div><div class="product-info"><div class="product-row-name">Calm Restore Serum</div><div class="product-row-cat">Face Care</div></div><div style="text-align:right;"><div class="product-row-revenue">€18,240</div><div class="product-row-units">314 units</div></div></div><div class="product-row"><div class="product-thumb"><svg width="24" height="40" viewBox="0 0 80 160"><rect x="14" y="28" width="52" height="118" rx="6" fill="#8C6E50" opacity="0.85"/><rect x="30" y="10" width="20" height="20" rx="3" fill="#8C6E50" opacity="0.6"/></svg></div><div class="product-info"><div class="product-row-name">Radiance Day Oil</div><div class="product-row-cat">Face Care</div></div><div style="text-align:right;"><div class="product-row-revenue">€14,625</div><div class="product-row-units">225 units</div></div></div><div class="product-row"><div class="product-thumb"><svg width="24" height="40" viewBox="0 0 80 160"><rect x="14" y="28" width="52" height="118" rx="6" fill="#1C1917" opacity="0.85"/><rect x="30" y="10" width="20" height="20" rx="3" fill="#1C1917" opacity="0.6"/></svg></div><div class="product-info"><div class="product-row-name">Night Renewal Balm</div><div class="product-row-cat">Face Care</div></div><div style="text-align:right;"><div class="product-row-revenue">€11,840</div><div class="product-row-units">160 units</div></div></div><div class="product-row"><div class="product-thumb"><svg width="24" height="40" viewBox="0 0 80 160"><rect x="14" y="28" width="52" height="118" rx="6" fill="#6B8F5E" opacity="0.85"/><rect x="30" y="10" width="20" height="20" rx="3" fill="#6B8F5E" opacity="0.6"/></svg></div><div class="product-info"><div class="product-row-name">Barrier Shield Mist</div><div class="product-row-cat">Body</div></div><div style="text-align:right;"><div class="product-row-revenue">€9,030</div><div class="product-row-units">215 units</div></div></div></div>
@@ -379,3 +437,5 @@
     animateCounter(document.getElementById('kpi-customers'), 1204, '', '');
   }, 300);
 </script>
+</body>
+</html>

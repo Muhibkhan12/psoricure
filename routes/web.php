@@ -16,6 +16,8 @@ Route::get('/contact', function(){
 Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[AdminController::class,'adminDashboard']);
     Route::get('/analytics',[AdminController::class,'adminAnalytics']);
-    Route::get('/products',[AdminController::class,'adminProducts']);
+    Route::get('/addProducts',[AdminController::class,'adminProducts']);
+    Route::get('/ManageProducts',[AdminController::class,'manageProducts']);
+    Route::get('/customers',[AdminController::class,'customerPage']);
     Route::get('/orders',[AdminController::class,'ordersPage']);
 });

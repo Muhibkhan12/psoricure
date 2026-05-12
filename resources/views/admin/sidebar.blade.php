@@ -1,6 +1,4 @@
-<?php
-// sidebar-header.php - Responsive version with linkable navigation
-?>
+
 <style>
   /* Mobile Menu Toggle Button */
   .menu-toggle {

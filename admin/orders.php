@@ -4,8 +4,8 @@ include('sidebar.php');
 ?>
 
 <style>
-  /* Import fonts */
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
+  /* Import the same sans-serif font as dashboard */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
 
   /* Main Content Override */
   .main-content {
@@ -14,7 +14,7 @@ include('sidebar.php');
     flex: 1;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE4 100%);
+    background: #FAF7F2;
     min-height: calc(100vh - 60px);
     transition: margin-left 0.3s ease;
   }
@@ -28,6 +28,26 @@ include('sidebar.php');
     height: 100%;
   }
 
+  /* Root variables */
+  :root {
+    --cream: #F5EFE4;
+    --sand: #E2D5C3;
+    --sand-light: #EDE5D8;
+    --tan: #C4A882;
+    --bark: #8C6E50;
+    --bark-dark: #6A5038;
+    --ink: #1C1917;
+    --off-white: #FAF7F2;
+    --warm-gray: #9A8F83;
+    --warm-gray-light: #BEB3A8;
+    --success: #6B8F5E;
+    --success-bg: #EEF4EB;
+    --warning: #C4903A;
+    --warning-bg: #FBF3E5;
+    --danger: #9E5A48;
+    --danger-bg: #F9EDEA;
+  }
+
   /* Page Header */
   .page-header {
     display: flex;
@@ -39,24 +59,25 @@ include('sidebar.php');
   }
   
   .page-title-section h1 {
-    font-family: 'Instrument Serif', serif;
-    font-size: 32px;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
     color: var(--ink);
     margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
   }
   
   .page-title-section p {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
     color: var(--warm-gray);
+    font-weight: 500;
   }
   
   /* Filters Bar */
   .filters-bar {
-    background: rgba(245,239,228,0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(226,213,195,0.5);
+    background: var(--cream);
+    border: 0.5px solid var(--sand);
     border-radius: 16px;
     padding: 1.25rem;
     display: flex;
@@ -72,7 +93,7 @@ include('sidebar.php');
   
   .filter-group label {
     display: block;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
@@ -87,7 +108,7 @@ include('sidebar.php');
     background: var(--off-white);
     border: 1.5px solid rgba(226,213,195,0.6);
     border-radius: 12px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 500;
     color: var(--ink);
@@ -110,9 +131,9 @@ include('sidebar.php');
     border: 1.5px solid rgba(226,213,195,0.6);
     border-radius: 12px;
     padding: 0.625rem 1.25rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--warm-gray);
     cursor: pointer;
     transition: all 0.2s;
@@ -132,10 +153,9 @@ include('sidebar.php');
   }
   
   .stat-card {
-    background: rgba(245,239,228,0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(226,213,195,0.5);
-    border-radius: 16px;
+    background: var(--cream);
+    border: 0.5px solid var(--sand);
+    border-radius: 14px;
     padding: 1.25rem;
     transition: all 0.3s ease;
   }
@@ -146,7 +166,7 @@ include('sidebar.php');
   }
   
   .stat-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
@@ -156,15 +176,17 @@ include('sidebar.php');
   }
   
   .stat-value {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
-    font-weight: 400;
+    font-weight: 800;
     color: var(--ink);
+    letter-spacing: -0.02em;
   }
   
   .stat-change {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
+    font-weight: 500;
     margin-top: 0.5rem;
   }
   
@@ -178,39 +200,38 @@ include('sidebar.php');
   
   /* Orders Table */
   .orders-table-container {
-    background: rgba(245,239,228,0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(226,213,195,0.5);
-    border-radius: 20px;
+    background: var(--cream);
+    border: 0.5px solid var(--sand);
+    border-radius: 16px;
     overflow-x: auto;
   }
   
   .orders-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 800px;
+    min-width: 900px;
   }
   
   .orders-table th {
     text-align: left;
     padding: 1rem 1.25rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     color: var(--warm-gray);
-    border-bottom: 1px solid rgba(226,213,195,0.5);
-    background: rgba(245,239,228,0.5);
+    border-bottom: 1px solid var(--sand);
+    background: var(--sand-light);
   }
   
   .orders-table td {
     padding: 1rem 1.25rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 500;
     color: var(--ink);
-    border-bottom: 1px solid rgba(226,213,195,0.3);
+    border-bottom: 0.5px solid rgba(226,213,195,0.3);
     vertical-align: middle;
   }
   
@@ -232,6 +253,7 @@ include('sidebar.php');
     font-size: 11px;
     font-weight: 600;
     text-transform: capitalize;
+    font-family: 'Inter', sans-serif;
   }
   
   .status-badge::before {
@@ -302,21 +324,25 @@ include('sidebar.php');
   }
   
   .action-btn {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    background: transparent;
-    border: 1px solid rgba(226,213,195,0.6);
+    background: var(--off-white);
+    border: 1px solid var(--sand);
     cursor: pointer;
     transition: all 0.2s;
   }
   
   .action-btn:hover {
-    background: rgba(196,168,130,0.1);
-    border-color: var(--tan);
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  
+  .action-btn:hover svg {
+    stroke: var(--cream);
   }
   
   .action-btn svg {
@@ -324,10 +350,6 @@ include('sidebar.php');
     height: 16px;
     stroke: var(--warm-gray);
     transition: all 0.2s;
-  }
-  
-  .action-btn:hover svg {
-    stroke: var(--bark);
   }
   
   /* Pagination */
@@ -342,10 +364,10 @@ include('sidebar.php');
     padding: 0.5rem 1rem;
     border-radius: 10px;
     background: transparent;
-    border: 1px solid rgba(226,213,195,0.6);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    border: 1px solid var(--sand);
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--warm-gray);
     cursor: pointer;
     transition: all 0.2s;
@@ -388,7 +410,7 @@ include('sidebar.php');
   
   .modal {
     background: var(--cream);
-    border-radius: 24px;
+    border-radius: 20px;
     max-width: 600px;
     width: 90%;
     max-height: 85vh;
@@ -409,14 +431,15 @@ include('sidebar.php');
     align-items: center;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(226,213,195,0.5);
+    border-bottom: 1px solid var(--sand);
   }
   
   .modal-header h2 {
-    font-family: 'Instrument Serif', serif;
-    font-size: 24px;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
     color: var(--ink);
+    letter-spacing: -0.02em;
   }
   
   .close-modal {
@@ -435,7 +458,7 @@ include('sidebar.php');
   }
   
   .modal-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   
   .order-detail-row {
@@ -450,6 +473,7 @@ include('sidebar.php');
     font-weight: 600;
     color: var(--warm-gray);
     font-size: 12px;
+    font-family: 'Inter', sans-serif;
   }
   
   .order-detail-value {
@@ -457,6 +481,7 @@ include('sidebar.php');
     font-weight: 500;
     color: var(--ink);
     font-size: 13px;
+    font-family: 'Inter', sans-serif;
   }
   
   .order-items-table {
@@ -471,27 +496,31 @@ include('sidebar.php');
     font-size: 11px;
     font-weight: 600;
     color: var(--warm-gray);
+    font-family: 'Inter', sans-serif;
   }
   
   .order-items-table td {
     padding: 0.5rem 0;
     font-size: 12px;
     border-top: 1px solid rgba(226,213,195,0.3);
+    font-family: 'Inter', sans-serif;
   }
   
   .status-update {
     margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(226,213,195,0.5);
+    border-top: 1px solid var(--sand);
   }
   
   .status-update select {
     padding: 0.625rem 1rem;
     border-radius: 12px;
-    border: 1.5px solid rgba(226,213,195,0.6);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    border: 1.5px solid var(--sand);
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
+    font-weight: 500;
     margin-right: 1rem;
+    background: var(--off-white);
   }
   
   .update-status-btn {
@@ -500,14 +529,29 @@ include('sidebar.php');
     border: none;
     padding: 0.625rem 1.25rem;
     border-radius: 12px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
   }
   
   .update-status-btn:hover {
     background: var(--bark);
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease both;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
   @media (max-width: 1024px) {
@@ -532,13 +576,25 @@ include('sidebar.php');
     .filter-group, .search-group {
       width: 100%;
     }
+    .page-title-section h1 {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .content-scroll {
+      padding: 0.75rem;
+    }
+    .stat-value {
+      font-size: 24px;
+    }
   }
 </style>
 
 <section class="main-content">
   <div class="content-scroll">
     <!-- Page Header -->
-    <div class="page-header">
+    <div class="page-header fade-in">
       <div class="page-title-section">
         <h1>Orders</h1>
         <p>Manage and track all customer orders</p>
@@ -546,7 +602,7 @@ include('sidebar.php');
     </div>
 
     <!-- Stats Cards -->
-    <div class="stats-grid">
+    <div class="stats-grid fade-in">
       <div class="stat-card">
         <div class="stat-label">Total Orders</div>
         <div class="stat-value" id="totalOrders">0</div>
@@ -570,7 +626,7 @@ include('sidebar.php');
     </div>
 
     <!-- Filters Bar -->
-    <div class="filters-bar">
+    <div class="filters-bar fade-in">
       <div class="filter-group">
         <label>Status</label>
         <select id="statusFilter" onchange="filterOrders()">
@@ -601,7 +657,7 @@ include('sidebar.php');
     </div>
 
     <!-- Orders Table -->
-    <div class="orders-table-container">
+    <div class="orders-table-container fade-in">
       <table class="orders-table">
         <thead>
           <tr>
@@ -610,7 +666,7 @@ include('sidebar.php');
             <th>Date</th>
             <th>Amount</th>
             <th>Status</th>
-            <th>Actions</th>
+            <th style="text-align: center;">Actions</th>
           </tr>
         </thead>
         <tbody id="ordersTableBody">
@@ -661,18 +717,15 @@ include('sidebar.php');
   const rowsPerPage = 8;
   let filteredOrders = [...ordersData];
 
-  // Format date
   function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
-  // Format currency
   function formatCurrency(amount) {
     return '€' + amount.toFixed(2);
   }
 
-  // Get status badge class
   function getStatusClass(status) {
     const statusMap = {
       'pending': 'status-pending',
@@ -685,24 +738,20 @@ include('sidebar.php');
     return statusMap[status] || 'status-pending';
   }
 
-  // Filter orders
   function filterOrders() {
     const statusFilter = document.getElementById('statusFilter').value;
     const dateFilter = document.getElementById('dateFilter').value;
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     
     filteredOrders = ordersData.filter(order => {
-      // Status filter
       if (statusFilter !== 'all' && order.status !== statusFilter) return false;
       
-      // Date filter
       if (dateFilter !== 'all') {
         const orderDate = new Date(order.date);
         const today = new Date();
-        const todayStr = today.toDateString();
         
         if (dateFilter === 'today') {
-          if (orderDate.toDateString() !== todayStr) return false;
+          if (orderDate.toDateString() !== today.toDateString()) return false;
         } else if (dateFilter === 'week') {
           const weekAgo = new Date(today.setDate(today.getDate() - 7));
           if (orderDate < weekAgo) return false;
@@ -715,7 +764,6 @@ include('sidebar.php');
         }
       }
       
-      // Search filter
       if (searchTerm) {
         return order.id.toLowerCase().includes(searchTerm) ||
                order.customer.toLowerCase().includes(searchTerm) ||
@@ -730,7 +778,6 @@ include('sidebar.php');
     updateStats();
   }
 
-  // Reset filters
   function resetFilters() {
     document.getElementById('statusFilter').value = 'all';
     document.getElementById('dateFilter').value = 'all';
@@ -741,7 +788,6 @@ include('sidebar.php');
     updateStats();
   }
 
-  // Update stats
   function updateStats() {
     const total = filteredOrders.length;
     const pending = filteredOrders.filter(o => o.status === 'pending').length;
@@ -754,7 +800,6 @@ include('sidebar.php');
     document.getElementById('shippedOrders').textContent = shipped;
   }
 
-  // Render orders table
   function renderOrdersTable() {
     const start = (currentPage - 1) * rowsPerPage;
     const end = start + rowsPerPage;
@@ -763,16 +808,16 @@ include('sidebar.php');
     const tbody = document.getElementById('ordersTableBody');
     tbody.innerHTML = paginatedOrders.map(order => `
       <tr>
-        <td style="font-weight: 600; color: var(--bark);">${order.id}</td>
+        <td style="font-weight: 700; color: var(--bark);">${order.id}</td>
         <td>
           ${order.customer}<br>
-          <small style="color: var(--warm-gray); font-size: 11px;">${order.email}</small>
+          <small style="color: var(--warm-gray); font-size: 11px; font-weight: 500;">${order.email}</small>
         </td>
-        <td>${formatDate(order.date)}</td>
-        <td style="font-weight: 600;">${formatCurrency(order.amount)}</td>
+        <td style="font-weight: 500;">${formatDate(order.date)}</td>
+        <td style="font-weight: 700;">${formatCurrency(order.amount)}</td>
         <td><span class="status-badge ${getStatusClass(order.status)}">${order.status}</span></td>
-        <td>
-          <div class="action-buttons">
+        <td style="text-align: center;">
+          <div class="action-buttons" style="justify-content: center;">
             <button class="action-btn" onclick="viewOrderDetails('${order.id}')" title="View Details">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -785,6 +830,21 @@ include('sidebar.php');
                 <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/>
               </svg>
             </button>
+            <button class="action-btn" onclick="printOrder('${order.id}')" title="Print Order">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <path d="M6 9V3h12v6"/>
+                <rect x="6" y="15" width="12" height="6" rx="2"/>
+              </svg>
+            </button>
+            <button class="action-btn" onclick="deleteOrder('${order.id}')" title="Delete Order" style="border-color: var(--danger);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                <line x1="10" y1="11" x2="10" y2="17"/>
+                <line x1="14" y1="11" x2="14" y2="17"/>
+              </svg>
+            </button>
           </div>
         </td>
       </tr>
@@ -793,7 +853,6 @@ include('sidebar.php');
     renderPagination();
   }
 
-  // Render pagination
   function renderPagination() {
     const totalPages = Math.ceil(filteredOrders.length / rowsPerPage);
     const paginationDiv = document.getElementById('pagination');
@@ -816,7 +875,6 @@ include('sidebar.php');
     renderOrdersTable();
   }
 
-  // View order details
   function viewOrderDetails(orderId) {
     const order = ordersData.find(o => o.id === orderId);
     if (!order) return;
@@ -862,7 +920,7 @@ include('sidebar.php');
         </div>
       </div>
       <div class="status-update">
-        <label style="display: block; margin-bottom: 0.5rem;">Update Status</label>
+        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Update Status</label>
         <select id="modalStatusSelect">
           <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
           <option value="processing" ${order.status === 'processing' ? 'selected' : ''}>Processing</option>
@@ -898,7 +956,22 @@ include('sidebar.php');
     viewOrderDetails(orderId);
   }
 
-  // Initialize
+  function printOrder(orderId) {
+    alert(`Printing order ${orderId}...`);
+  }
+
+  function deleteOrder(orderId) {
+    if (confirm(`Are you sure you want to delete order ${orderId}?`)) {
+      const orderIndex = ordersData.findIndex(o => o.id === orderId);
+      if (orderIndex !== -1) {
+        ordersData.splice(orderIndex, 1);
+        filteredOrders = [...ordersData];
+        filterOrders();
+        alert(`Order ${orderId} has been deleted.`);
+      }
+    }
+  }
+
   function init() {
     filteredOrders = [...ordersData];
     renderOrdersTable();

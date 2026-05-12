@@ -1,6 +1,5 @@
 <?php
 // analytics.php - Analytics Dashboard Page
-// Make sure sidebar-header.php contains both sidebar and topbar
 include('sidebar.php');
 ?>
 
@@ -9,6 +8,9 @@ include('sidebar.php');
 
 <section class="main-content">
   <style>
+    /* Import the same sans-serif font as dashboard */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+
     /* Main Content Override - respects sidebar and header */
     .main-content {
       margin-left: 240px;
@@ -30,6 +32,26 @@ include('sidebar.php');
       height: 100%;
     }
 
+    /* Root variables - matching dashboard */
+    :root {
+      --cream: #F5EFE4;
+      --sand: #E2D5C3;
+      --sand-light: #EDE5D8;
+      --tan: #C4A882;
+      --bark: #8C6E50;
+      --bark-dark: #6A5038;
+      --ink: #1C1917;
+      --off-white: #FAF7F2;
+      --warm-gray: #9A8F83;
+      --warm-gray-light: #BEB3A8;
+      --success: #6B8F5E;
+      --success-bg: #EEF4EB;
+      --warning: #C4903A;
+      --warning-bg: #FBF3E5;
+      --danger: #9E5A48;
+      --danger-bg: #F9EDEA;
+    }
+
     /* Analytics Page Specific Styles */
     .analytics-header {
       display: flex;
@@ -38,6 +60,22 @@ include('sidebar.php');
       flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 0.5rem;
+    }
+    
+    .page-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    
+    .page-breadcrumb {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #9A8F83;
+      letter-spacing: 0.02em;
+      font-weight: 500;
     }
     
     .date-range-selector {
@@ -51,7 +89,7 @@ include('sidebar.php');
     .date-btn {
       padding: 0.5rem 1rem;
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 600;
       border: none;
       background: transparent;
       border-radius: 8px;
@@ -83,7 +121,7 @@ include('sidebar.php');
     .metric-card {
       background: var(--cream);
       border: 0.5px solid var(--sand);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 1.25rem;
       transition: all 0.2s;
     }
@@ -94,20 +132,22 @@ include('sidebar.php');
     }
     
     .metric-label {
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       color: var(--warm-gray);
-      font-weight: 500;
+      font-weight: 600;
       margin-bottom: 0.5rem;
     }
     
     .metric-value {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 32px;
-      font-weight: 600;
+      font-weight: 800;
       color: var(--ink);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
     }
     
     .metric-trend {
@@ -115,20 +155,24 @@ include('sidebar.php');
       align-items: center;
       gap: 0.5rem;
       font-size: 11px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
     }
     
     .trend-up {
       color: var(--success);
       background: var(--success-bg);
-      padding: 2px 6px;
-      border-radius: 10px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 600;
     }
     
     .trend-down {
       color: var(--danger);
       background: var(--danger-bg);
-      padding: 2px 6px;
-      border-radius: 10px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 600;
     }
     
     /* Two Column Layout */
@@ -142,21 +186,24 @@ include('sidebar.php');
     .chart-card-lg {
       background: var(--cream);
       border: 0.5px solid var(--sand);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 1.25rem;
     }
     
     .chart-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 0.25rem;
+      color: var(--ink);
     }
     
     .chart-subtitle {
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       color: var(--warm-gray);
       margin-bottom: 1rem;
+      font-weight: 500;
     }
     
     .chart-container {
@@ -171,10 +218,11 @@ include('sidebar.php');
     }
     
     .product-table th {
+      font-family: 'Inter', sans-serif;
       text-align: left;
       padding: 0.75rem 0;
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--warm-gray);
@@ -182,8 +230,10 @@ include('sidebar.php');
     }
     
     .product-table td {
+      font-family: 'Inter', sans-serif;
       padding: 0.75rem 0;
       font-size: 12px;
+      font-weight: 500;
       border-bottom: 0.5px solid rgba(226,213,195,0.5);
     }
     
@@ -193,12 +243,12 @@ include('sidebar.php');
     
     .product-rank {
       width: 30px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--bark);
     }
     
     .product-name-cell {
-      font-weight: 500;
+      font-weight: 600;
     }
     
     /* Top Countries */
@@ -215,25 +265,31 @@ include('sidebar.php');
     }
     
     .country-flag {
-      font-size: 18px;
-      width: 28px;
+      font-size: 20px;
+      width: 32px;
     }
     
     .country-name {
+      font-family: 'Inter', sans-serif;
       flex: 1;
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 600;
+      color: var(--ink);
     }
     
     .country-revenue {
-      font-size: 12px;
-      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
     }
     
     .country-growth {
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 10px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 600;
     }
     
     /* Hourly Heatmap */
@@ -249,10 +305,13 @@ include('sidebar.php');
     }
     
     .heatmap-day-label {
+      font-family: 'Inter', sans-serif;
       font-size: 9px;
       color: var(--warm-gray);
       margin-bottom: 8px;
       text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
     }
     
     .heatmap-hours {
@@ -263,7 +322,7 @@ include('sidebar.php');
     
     .heatmap-cell {
       height: 28px;
-      border-radius: 4px;
+      border-radius: 6px;
       transition: all 0.2s;
       cursor: pointer;
     }
@@ -283,23 +342,43 @@ include('sidebar.php');
     .kpi-mini-card {
       background: var(--cream);
       border: 0.5px solid var(--sand);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1rem;
       text-align: center;
     }
     
     .kpi-mini-value {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 24px;
-      font-weight: 600;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
     }
     
     .kpi-mini-label {
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
       color: var(--warm-gray);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-top: 4px;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+    
+    /* Fade In Animation */
+    .fade-in {
+      animation: fadeIn 0.5s ease both;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     /* Responsive Breakpoints */
@@ -341,6 +420,9 @@ include('sidebar.php');
       .chart-container {
         height: 220px;
       }
+      .page-title {
+        font-size: 24px;
+      }
     }
     
     @media (max-width: 480px) {
@@ -353,6 +435,9 @@ include('sidebar.php');
       }
       .chart-card-lg {
         padding: 0.75rem;
+      }
+      .page-title {
+        font-size: 22px;
       }
     }
   </style>
@@ -519,16 +604,16 @@ function drawRevenueTrendChart() {
   
   const options = {
     curveType: 'function',
-    legend: { position: 'bottom', textStyle: { fontName: 'Inter', fontSize: 10 } },
+    legend: { position: 'bottom', textStyle: { fontName: 'Inter', fontSize: 10, fontWeight: '500' } },
     chartArea: { width: '85%', height: '70%' },
     colors: ['#C4A882', '#6B8F5E'],
     backgroundColor: 'transparent',
     lineWidth: 2,
     pointSize: 4,
     pointColor: '#8C6E50',
-    vAxis: { textStyle: { fontName: 'Inter', fontSize: 9 }, gridlines: { color: '#E2D5C3' } },
-    hAxis: { textStyle: { fontName: 'Inter', fontSize: 9 }, slantedText: true },
-    tooltip: { textStyle: { fontName: 'Inter', fontSize: 11 } }
+    vAxis: { textStyle: { fontName: 'Inter', fontSize: 9, fontWeight: '500' }, gridlines: { color: '#E2D5C3' } },
+    hAxis: { textStyle: { fontName: 'Inter', fontSize: 9, fontWeight: '500' }, slantedText: true },
+    tooltip: { textStyle: { fontName: 'Inter', fontSize: 11, fontWeight: '500' } }
   };
   
   const chart = new google.visualization.LineChart(document.getElementById('revenue-trend-chart'));
@@ -546,12 +631,12 @@ function drawChannelChart() {
   ]);
   
   const options = {
-    legend: { position: 'bottom', textStyle: { fontName: 'Inter', fontSize: 10 } },
+    legend: { position: 'bottom', textStyle: { fontName: 'Inter', fontSize: 10, fontWeight: '500' } },
     chartArea: { width: '85%', height: '70%' },
     backgroundColor: 'transparent',
     bar: { groupWidth: '60%' },
-    vAxis: { textStyle: { fontName: 'Inter', fontSize: 9 }, format: 'currency' },
-    hAxis: { textStyle: { fontName: 'Inter', fontSize: 9 } }
+    vAxis: { textStyle: { fontName: 'Inter', fontSize: 9, fontWeight: '500' }, format: 'currency' },
+    hAxis: { textStyle: { fontName: 'Inter', fontSize: 9, fontWeight: '500' } }
   };
   
   const chart = new google.visualization.ColumnChart(document.getElementById('channel-chart'));
@@ -568,12 +653,12 @@ function drawSegmentsChart() {
   ]);
   
   const options = {
-    legend: { position: 'bottom', textStyle: { fontName: 'Inter', fontSize: 10 } },
+    legend: { position: 'bottom', textStyle: { fontName: 'Inter', fontSize: 10, fontWeight: '500' } },
     pieHole: 0.4,
     chartArea: { width: '90%', height: '80%' },
     backgroundColor: 'transparent',
     colors: ['#C4A882', '#6B8F5E', '#8C6E50', '#D4BCA0'],
-    tooltip: { textStyle: { fontName: 'Inter', fontSize: 11 } }
+    tooltip: { textStyle: { fontName: 'Inter', fontSize: 11, fontWeight: '500' } }
   };
   
   const chart = new google.visualization.PieChart(document.getElementById('segments-chart'));
@@ -589,10 +674,10 @@ function renderTopProducts() {
     return `
       <tr>
         <td class="product-rank">${index + 1}</td>
-        <td class="product-name-cell">${product.name}<br><span style="font-size:9px;color:var(--warm-gray);">${product.category}</span></td>
-        <td style="font-weight:600;">€${product.revenue.toLocaleString()}</td>
-        <td>${product.units}</td>
-        <td><span class="${growthClass}" style="padding:2px 6px;border-radius:10px;font-size:9px;">${growthSymbol} ${Math.abs(product.growth)}%</span></td>
+        <td class="product-name-cell">${product.name}<br><span style="font-size:10px;color:var(--warm-gray);font-weight:500;">${product.category}</span></td>
+        <td style="font-weight:700;">€${product.revenue.toLocaleString()}</td>
+        <td style="font-weight:600;">${product.units}</td>
+        <td><span class="${growthClass}" style="padding:3px 8px;border-radius:20px;font-size:10px;font-weight:600;white-space:nowrap;">${growthSymbol} ${Math.abs(product.growth)}%</span></td>
       </tr>
     `;
   }).join('');
@@ -609,7 +694,7 @@ function renderTopCountries() {
         <div class="country-flag">${country.flag}</div>
         <div class="country-name">${country.name}</div>
         <div class="country-revenue">€${country.revenue.toLocaleString()}</div>
-        <div class="country-growth ${growthClass}" style="padding:2px 6px;border-radius:10px;font-size:9px;">${growthSymbol} ${Math.abs(country.growth)}%</div>
+        <div class="country-growth ${growthClass}" style="padding:3px 8px;border-radius:20px;font-size:10px;font-weight:600;">${growthSymbol} ${Math.abs(country.growth)}%</div>
       </div>
     `;
   }).join('');

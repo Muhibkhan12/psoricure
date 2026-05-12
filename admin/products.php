@@ -4,8 +4,8 @@ include('sidebar.php');
 ?>
 
 <style>
-  /* Import better fonts */
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
+  /* Import the same sans-serif font as dashboard */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
 
   /* Main Content Override - ensures space for sidebar and header */
   .main-content {
@@ -14,7 +14,7 @@ include('sidebar.php');
     flex: 1;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE4 100%);
+    background: #FAF7F2;
     min-height: calc(100vh - 60px);
     transition: margin-left 0.3s ease;
   }
@@ -26,6 +26,26 @@ include('sidebar.php');
     gap: 1.5rem;
     overflow-y: auto;
     height: 100%;
+  }
+
+  /* Root variables */
+  :root {
+    --cream: #F5EFE4;
+    --sand: #E2D5C3;
+    --sand-light: #EDE5D8;
+    --tan: #C4A882;
+    --bark: #8C6E50;
+    --bark-dark: #6A5038;
+    --ink: #1C1917;
+    --off-white: #FAF7F2;
+    --warm-gray: #9A8F83;
+    --warm-gray-light: #BEB3A8;
+    --success: #6B8F5E;
+    --success-bg: #EEF4EB;
+    --warning: #C4903A;
+    --warning-bg: #FBF3E5;
+    --danger: #9E5A48;
+    --danger-bg: #F9EDEA;
   }
 
   /* Product Form Specific Styles */
@@ -56,18 +76,19 @@ include('sidebar.php');
   }
   
   .welcome-banner h1 {
-    font-family: 'Instrument Serif', serif;
-    font-size: 32px;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
     color: #F5EFE4;
     margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
   }
   
   .welcome-banner p {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
     color: rgba(245,239,228,0.7);
-    font-weight: 400;
+    font-weight: 500;
   }
   
   .form-grid {
@@ -77,37 +98,35 @@ include('sidebar.php');
   }
   
   .form-section {
-    background: rgba(245,239,228,0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(226,213,195,0.5);
-    border-radius: 20px;
+    background: var(--cream);
+    border: 0.5px solid var(--sand);
+    border-radius: 16px;
     padding: 1.75rem;
     margin-bottom: 1.5rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
   }
   
   .form-section:hover {
     box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-    border-color: rgba(196,168,130,0.3);
+    border-color: var(--tan);
   }
   
   .section-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: 22px;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
     margin-bottom: 0.25rem;
     color: var(--ink);
     letter-spacing: -0.01em;
   }
   
   .section-subtitle {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     color: var(--warm-gray);
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(226,213,195,0.5);
+    border-bottom: 1px solid var(--sand);
     font-weight: 500;
   }
   
@@ -117,7 +136,7 @@ include('sidebar.php');
   
   label {
     display: block;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 600;
     color: var(--ink);
@@ -134,9 +153,9 @@ include('sidebar.php');
     width: 100%;
     padding: 0.875rem 1.125rem;
     background: var(--off-white);
-    border: 1.5px solid rgba(226,213,195,0.6);
-    border-radius: 14px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    border: 1.5px solid var(--sand);
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: var(--ink);
@@ -160,13 +179,13 @@ include('sidebar.php');
   
   /* Image Upload Area */
   .image-upload-area {
-    border: 2px dashed rgba(196,168,130,0.4);
-    border-radius: 16px;
+    border: 2px dashed var(--sand);
+    border-radius: 14px;
     padding: 2rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s;
-    background: rgba(255,255,255,0.5);
+    background: var(--off-white);
   }
   
   .image-upload-area:hover {
@@ -189,7 +208,7 @@ include('sidebar.php');
   }
   
   .image-upload-area p {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 500;
     color: var(--ink);
@@ -253,8 +272,8 @@ include('sidebar.php');
     gap: 0.5rem;
     padding: 0.625rem;
     background: var(--off-white);
-    border: 1.5px solid rgba(226,213,195,0.6);
-    border-radius: 14px;
+    border: 1.5px solid var(--sand);
+    border-radius: 12px;
     min-height: 52px;
     transition: all 0.2s;
   }
@@ -265,11 +284,11 @@ include('sidebar.php');
   }
   
   .tag {
-    background: linear-gradient(135deg, var(--tan) 0%, var(--bark) 100%);
+    background: var(--bark);
     color: white;
     padding: 0.375rem 0.875rem;
-    border-radius: 24px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 500;
     display: flex;
@@ -301,7 +320,7 @@ include('sidebar.php');
     flex: 1;
     min-width: 120px;
     background: transparent;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
   }
   
@@ -393,16 +412,16 @@ include('sidebar.php');
     gap: 1rem;
     margin-top: 2rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(226,213,195,0.5);
+    border-top: 1px solid var(--sand);
   }
   
   .btn-primary {
-    background: linear-gradient(135deg, var(--ink) 0%, var(--bark-dark) 100%);
+    background: var(--ink);
     color: var(--cream);
     border: none;
     padding: 0.875rem 2rem;
     border-radius: 40px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -411,6 +430,7 @@ include('sidebar.php');
   }
   
   .btn-primary:hover {
+    background: var(--bark);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(28,25,23,0.2);
   }
@@ -422,10 +442,10 @@ include('sidebar.php');
   .btn-secondary {
     background: transparent;
     color: var(--ink);
-    border: 1.5px solid rgba(226,213,195,0.8);
+    border: 1.5px solid var(--sand);
     padding: 0.875rem 2rem;
     border-radius: 40px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -440,7 +460,7 @@ include('sidebar.php');
   
   /* Slug Preview */
   .slug-preview {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     color: var(--warm-gray);
     margin-top: 0.5rem;
@@ -457,7 +477,7 @@ include('sidebar.php');
   }
   
   /* Page Header */
-  .analytics-header {
+  .page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -467,15 +487,15 @@ include('sidebar.php');
   }
   
   .page-title {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 28px;
-    font-weight: 400;
+    font-weight: 700;
     color: var(--ink);
     letter-spacing: -0.02em;
   }
   
   .page-breadcrumb {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     color: #9A8F83;
     letter-spacing: 0.02em;
@@ -491,12 +511,27 @@ include('sidebar.php');
     background-size: 1.2em;
   }
   
+  .fade-in {
+    animation: fadeIn 0.5s ease both;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
   @media (max-width: 1024px) {
     .main-content {
       margin-left: 0;
     }
     .welcome-banner h1 {
-      font-size: 28px;
+      font-size: 24px;
     }
   }
   
@@ -515,7 +550,7 @@ include('sidebar.php');
       padding: 1.5rem;
     }
     .welcome-banner h1 {
-      font-size: 24px;
+      font-size: 22px;
     }
     .page-title {
       font-size: 24px;
@@ -543,7 +578,7 @@ include('sidebar.php');
   <div class="content-scroll">
     <div class="form-container">
       <!-- Welcome Banner -->
-      <div class="welcome-banner">
+      <div class="welcome-banner fade-in">
         <h1>Create New Product</h1>
         <p>Fill in the details below to add a new product to your catalog</p>
       </div>
@@ -554,7 +589,7 @@ include('sidebar.php');
           <!-- Left Column -->
           <div>
             <!-- Basic Information -->
-            <div class="form-section">
+            <div class="form-section fade-in">
               <div class="section-title">Basic Information</div>
               <div class="section-subtitle">Product details and identification</div>
               
@@ -581,7 +616,7 @@ include('sidebar.php');
             </div>
             
             <!-- Media -->
-            <div class="form-section">
+            <div class="form-section fade-in">
               <div class="section-title">Media</div>
               <div class="section-subtitle">Product images and gallery</div>
               
@@ -622,7 +657,7 @@ include('sidebar.php');
           <!-- Right Column -->
           <div>
             <!-- Product Details -->
-            <div class="form-section">
+            <div class="form-section fade-in">
               <div class="section-title">Product Details</div>
               <div class="section-subtitle">Categorization and attributes</div>
               
@@ -657,7 +692,7 @@ include('sidebar.php');
             </div>
             
             <!-- Usage Instructions -->
-            <div class="form-section">
+            <div class="form-section fade-in">
               <div class="section-title">Usage Instructions</div>
               <div class="section-subtitle">How customers should use this product</div>
               
@@ -668,7 +703,7 @@ include('sidebar.php');
             </div>
             
             <!-- Inventory & Status -->
-            <div class="form-section">
+            <div class="form-section fade-in">
               <div class="section-title">Inventory & Status</div>
               <div class="section-subtitle">Stock management and product visibility</div>
               

@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function(){
+    return view('login');
+});
 Route::get('/home', function () {
     return view('index');
 });
@@ -12,7 +16,9 @@ Route::get('/products', function (){
 Route::get('/contact', function(){
     return view('contact');
 });
-
+Route::prefix('user')->group(function(){
+    Route::post('/register',[UserController::class,'createUser'])->name('register-user');
+});
 Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[AdminController::class,'adminDashboard']);
     Route::get('/analytics',[AdminController::class,'adminAnalytics']);

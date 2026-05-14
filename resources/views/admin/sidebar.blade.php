@@ -1,4 +1,3 @@
-
 <style>
   /* Mobile Menu Toggle Button */
   .menu-toggle {
@@ -12,7 +11,7 @@
     background: #1C1917;
     border: none;
     border-radius: 8px;
-    cursor: pointer;*
+    cursor: pointer;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -35,7 +34,7 @@
     transform: rotate(-45deg) translate(7px, -7px);
   }
 
-  /* Sidebar Styles - Responsive */
+  /* Sidebar Styles */
   .sidebar {
     width: 240px;
     height: 100vh;
@@ -65,6 +64,8 @@
   .sidebar-logo {
     padding: 28px 24px 20px;
     border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    text-decoration: none;
+    display: block;
   }
   .logo-mark {
     font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -73,7 +74,6 @@
     text-transform: uppercase;
     color: #F5EFE4;
     font-weight: 500;
-    text-decoration: none;
     display: block;
   }
   .logo-sub {
@@ -180,18 +180,11 @@
     letter-spacing: 0.06em;
     font-weight: 400;
   }
-  .sidebar::-webkit-scrollbar {
-    width: 4px;
-  }
-  .sidebar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .sidebar::-webkit-scrollbar-thumb {
-    background: #E2D5C3;
-    border-radius: 2px;
-  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: #E2D5C3; border-radius: 2px; }
 
-  /* Header/Topbar Styles - Responsive */
+  /* Topbar Styles */
   .topbar {
     height: 60px;
     background: #FAF7F2;
@@ -213,13 +206,13 @@
     display: flex;
     flex-direction: column;
   }
-  .page-title {
+  .topbar-page-title {
     font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
     font-size: 20px;
     font-weight: 500;
     color: #1C1917;
   }
-  .page-breadcrumb {
+  .topbar-breadcrumb {
     font-size: 11px;
     color: #9A8F83;
     letter-spacing: 0.05em;
@@ -245,13 +238,10 @@
     outline: none;
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    font-weight: 400;
     color: #1C1917;
     width: 160px;
   }
-  .search-box input::placeholder {
-    color: #BEB3A8;
-  }
+  .search-box input::placeholder { color: #BEB3A8; }
   .search-box svg {
     width: 14px;
     height: 14px;
@@ -273,9 +263,7 @@
     transition: background 0.2s;
     position: relative;
   }
-  .icon-btn:hover {
-    background: #E2D5C3;
-  }
+  .icon-btn:hover { background: #E2D5C3; }
   .icon-btn svg {
     width: 16px;
     height: 16px;
@@ -293,7 +281,7 @@
     border-radius: 50%;
     border: 1.5px solid #FAF7F2;
   }
-  .pill-action {
+  .topbar-pill-action {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -309,12 +297,12 @@
     font-family: 'Inter', sans-serif;
     font-weight: 500;
   }
-  .pill-action:hover {
+  .topbar-pill-action:hover {
     background: #1C1917;
     color: #F5EFE4;
     border-color: #1C1917;
   }
-  .pill-action svg {
+  .topbar-pill-action svg {
     width: 12px;
     height: 12px;
     stroke: currentColor;
@@ -322,78 +310,37 @@
     stroke-width: 1.5;
   }
 
-  /* Responsive Breakpoints */
+  /* Responsive */
   @media (max-width: 1024px) {
-    .sidebar {
-      transform: translateX(-100%);
-    }
-    .sidebar.open {
-      transform: translateX(0);
-    }
-    .topbar {
-      left: 0;
-    }
-    .menu-toggle {
-      display: flex;
-    }
-    .topbar-left {
-      margin-left: 50px;
-    }
-    .search-box input {
-      width: 120px;
-    }
-    .topbar-right {
-      gap: 8px;
-    }
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .topbar { left: 0; }
+    .menu-toggle { display: flex; }
+    .topbar-left { margin-left: 50px; }
+    .search-box input { width: 120px; }
+    .topbar-right { gap: 8px; }
   }
 
   @media (max-width: 768px) {
-    .topbar {
-      padding: 0 1rem;
-    }
-    .search-box {
-      display: none;
-    }
-    .page-title {
-      font-size: 16px;
-    }
-    .page-breadcrumb {
-      font-size: 9px;
-    }
-    .topbar-right {
-      gap: 6px;
-    }
-    .icon-btn {
-      width: 30px;
-      height: 30px;
-    }
-    .pill-action {
-      padding: 4px 10px;
-      font-size: 10px;
-    }
-    .pill-action svg {
-      width: 10px;
-      height: 10px;
-    }
+    .topbar { padding: 0 1rem; }
+    .search-box { display: none; }
+    .topbar-page-title { font-size: 16px; }
+    .topbar-breadcrumb { font-size: 9px; }
+    .topbar-right { gap: 6px; }
+    .icon-btn { width: 30px; height: 30px; }
+    .topbar-pill-action { padding: 4px 10px; font-size: 10px; }
+    .topbar-pill-action svg { width: 10px; height: 10px; }
   }
 
   @media (max-width: 480px) {
-    .topbar-left {
-      margin-left: 45px;
-    }
-    .page-title {
-      font-size: 14px;
-    }
-    .page-breadcrumb {
-      display: none;
-    }
-    .icon-btn:nth-child(2) {
-      display: none;
-    }
+    .topbar-left { margin-left: 45px; }
+    .topbar-page-title { font-size: 14px; }
+    .topbar-breadcrumb { display: none; }
+    .icon-btn:nth-child(2) { display: none; }
   }
 </style>
 
-<!-- Mobile Menu Toggle Button -->
+<!-- Mobile Menu Toggle -->
 <button class="menu-toggle" id="menuToggle">
   <span></span>
   <span></span>
@@ -401,61 +348,62 @@
 </button>
 
 <section class="sidebar" id="sidebar">
-  <a href="{{url('admin/dashboard')}}" class="sidebar-logo" style="text-decoration: none;">
+  <a href="{{url('admin/dashboard')}}" class="sidebar-logo">
     <div class="logo-mark">Psoricure</div>
     <div class="logo-sub">Admin Console</div>
   </a>
 
   <nav class="sidebar-nav">
     <div class="nav-section-label">Overview</div>
-    <a href="{{url('admin/dashboard')}}" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
+    <a href="{{url('admin/dashboard')}}" class="nav-item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
       <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       Dashboard
     </a>
-    <a href="{{url('admin/analytics')}}" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'analytics.php' ? 'active' : ''; ?>">
-      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 3h18v4H3z"/><path d="M3 11h18v2H3z"/><path d="M3 17h18v4H3z"/></svg>
+    <a href="{{url('admin/analytics')}}" class="nav-item {{ request()->is('admin/analytics') ? 'active' : '' }}">
+      <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       Analytics
     </a>
+
     <div class="nav-section-label">Commerce</div>
-    <a href="{{url('admin/orders')}}" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'orders.php' ? 'active' : ''; ?>">
+    <a href="{{url('admin/orders')}}" class="nav-item {{ request()->is('admin/orders') ? 'active' : '' }}">
       <svg class="nav-icon" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       Orders
       <span class="nav-badge">12</span>
     </a>
-    <a href="{{url('admin/addProducts')}}" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'products.php' ? 'active' : ''; ?>">
+    <a href="{{url('admin/addProducts')}}" class="nav-item {{ request()->is('admin/addProducts') ? 'active' : '' }}">
       <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
       Add Products
     </a>
-    <a href="{{url('admin/ManageProducts')}}" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'products.php' ? 'active' : ''; ?>">
-      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+    <a href="{{url('admin/ManageProducts')}}" class="nav-item {{ request()->is('admin/ManageProducts') ? 'active' : '' }}">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
       Manage Products
     </a>
-    <a href="{{url('admin/customers')}}" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'customers.php' ? 'active' : ''; ?>">
+    <a href="{{url('admin/customers')}}" class="nav-item {{ request()->is('admin/customers') ? 'active' : '' }}">
       <svg class="nav-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       Customers
     </a>
-    <a href="{{url('admin/reveue')}}" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'revenue.php' ? 'active' : ''; ?>">
+    <a href="{{url('admin/reveue')}}" class="nav-item {{ request()->is('admin/reveue') ? 'active' : '' }}">
       <svg class="nav-icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       Revenue
     </a>
 
     <div class="nav-section-label">Content</div>
-    <a href="journal.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'journal.php' ? 'active' : ''; ?>">
+    <a href="{{url('admin/journal')}}" class="nav-item {{ request()->is('admin/journal') ? 'active' : '' }}">
       <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       Journal
       <span class="nav-badge">3</span>
     </a>
-    <a href="media.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'media.php' ? 'active' : ''; ?>">
+    <a href="{{url('admin/media')}}" class="nav-item {{ request()->is('admin/media') ? 'active' : '' }}">
       <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
       Media
     </a>
-    <a href="marketing.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'marketing.php' ? 'active' : ''; ?>">
+    <a href="{{url('admin/marketing')}}" class="nav-item {{ request()->is('admin/marketing') ? 'active' : '' }}">
       <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
       Marketing
     </a>
 
     <div class="nav-section-label">System</div>
-    <a href="settings.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>">
+    <a href="{{url('admin/settings')}}" class="nav-item {{ request()->is('admin/settings') ? 'active' : '' }}">
       <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
       Settings
     </a>
@@ -472,27 +420,27 @@
 
 <section class="topbar">
   <div class="topbar-left">
-    <div class="page-title">
-      <?php
-        // Dynamic page title based on current file
-        $currentPage = basename($_SERVER['PHP_SELF'], '.php');
+    <div class="topbar-page-title">
+      @php
+        $routeName = request()->segment(2);
         $titles = [
-          'dashboard' => 'Dashboard',
-          'analytics' => 'Analytics',
-          'orders' => 'Orders',
-          'products' => 'Products',
-          'customers' => 'Customers',
-          'revenue' => 'Revenue',
-          'journal' => 'Journal',
-          'media' => 'Media',
-          'marketing' => 'Marketing',
-          'settings' => 'Settings'
+          'dashboard'      => 'Dashboard',
+          'analytics'      => 'Analytics',
+          'orders'         => 'Orders',
+          'addProducts'    => 'Add Products',
+          'ManageProducts' => 'Manage Products',
+          'customers'      => 'Customers',
+          'reveue'         => 'Revenue',
+          'journal'        => 'Journal',
+          'media'          => 'Media',
+          'marketing'      => 'Marketing',
+          'settings'       => 'Settings',
         ];
-        echo ucfirst($titles[$currentPage] ?? 'Dashboard');
-      ?>
+        echo $titles[$routeName] ?? 'Dashboard';
+      @endphp
     </div>
-    <div class="page-breadcrumb">
-      <?php echo date('F Y'); ?> &nbsp;·&nbsp; All stores
+    <div class="topbar-breadcrumb">
+      {{ date('F Y') }} &nbsp;·&nbsp; All stores
     </div>
   </div>
   <div class="topbar-right">
@@ -507,7 +455,7 @@
     <div class="icon-btn">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
     </div>
-    <button class="pill-action">
+    <button class="topbar-pill-action">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Export
     </button>
@@ -515,32 +463,26 @@
 </section>
 
 <script>
-  // Mobile menu toggle functionality
   const menuToggle = document.getElementById('menuToggle');
-  const sidebar = document.getElementById('sidebar');
-  
+  const sidebar    = document.getElementById('sidebar');
+
   if (menuToggle) {
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function () {
       sidebar.classList.toggle('open');
       this.classList.toggle('active');
     });
   }
-  
-  // Close sidebar when clicking outside on mobile
-  document.addEventListener('click', function(event) {
+
+  document.addEventListener('click', function (e) {
     if (window.innerWidth <= 1024) {
-      const isClickInsideSidebar = sidebar.contains(event.target);
-      const isClickOnToggle = menuToggle.contains(event.target);
-      
-      if (!isClickInsideSidebar && !isClickOnToggle && sidebar.classList.contains('open')) {
+      if (!sidebar.contains(e.target) && !menuToggle.contains(e.target) && sidebar.classList.contains('open')) {
         sidebar.classList.remove('open');
         menuToggle.classList.remove('active');
       }
     }
   });
-  
-  // Handle window resize - reset sidebar state on desktop
-  window.addEventListener('resize', function() {
+
+  window.addEventListener('resize', function () {
     if (window.innerWidth > 1024) {
       sidebar.classList.remove('open');
       if (menuToggle) menuToggle.classList.remove('active');

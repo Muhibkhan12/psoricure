@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use PHPUnit\Event\Test\Failed;
 
 class AuthController extends Controller
 {
@@ -36,7 +38,24 @@ class AuthController extends Controller
     }
 
     
-    public function loginUser(Request $request){
-        
+public function loginUser(Request $request){
+    // Remove try-catch temporarily to see real error
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+    
+    if(Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->route('home')->with('success','Login Successfull');
+    };
+    
+    return redirect()->back()->with('error','Invalid Email or Password');
+}
+
+    public function logoutUser(){
+        Auth::logout();
+
+        return redirect()->route('user-login')->with('success','Logged out Successfully');
     }
 }

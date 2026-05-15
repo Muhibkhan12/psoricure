@@ -11,7 +11,7 @@ Route::get('/', function(){
 });
 Route::get('/home', function () {
     return view('index');
-});
+})->name('home');
 Route::get('/products', function (){
     return  view('products');
 });
@@ -21,6 +21,7 @@ Route::get('/contact', function(){
 Route::prefix('user')->group(function(){
     Route::post('/register',[AuthController::class,'createUser'])->name('register-user');
     Route::post('/login',[AuthController::class,'loginUser'])->name('user-login');
+    Route::post('/logout',[AuthController::class,'logoutUser'])->name('logout-user');
 });
 Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[AdminController::class,'adminDashboard']);

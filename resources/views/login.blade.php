@@ -146,6 +146,26 @@ html, body {
   display: none;
 }
 
+/* Global alert message from Laravel */
+.global-alert {
+  background: var(--cream);
+  border-left: 4px solid var(--bark);
+  padding: 12px 16px;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--ink);
+  animation: slideIn 0.3s ease;
+}
+.global-alert.error {
+  border-left-color: var(--danger);
+  background: #fdf0ed;
+}
+.global-alert.success {
+  border-left-color: var(--success);
+  background: #edf5ea;
+}
+
 .auth-tabs {
   display: flex;
   background: var(--sand-light);
@@ -230,23 +250,12 @@ html, body {
 .field-input::placeholder { color: var(--warm-gray-lt); }
 .field-input:focus { border-color: var(--tan); box-shadow: 0 0 0 3px rgba(196,168,130,0.12); }
 
-.eye-btn {
-  position: absolute;
-  right: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
+.field-error {
+  font-size: 10px;
+  color: var(--danger);
+  margin-top: 4px;
+  letter-spacing: 0.02em;
 }
-.eye-btn svg { width: 15px; height: 15px; stroke: var(--warm-gray-lt); fill: none; stroke-width: 1.5; }
-
-.strength-bar { display: flex; gap: 4px; margin-top: 6px; }
-.strength-seg { flex: 1; height: 2px; background: var(--sand); border-radius: 1px; transition: background 0.3s; }
-.strength-label { font-size: 10px; color: var(--warm-gray-lt); margin-top: 4px; letter-spacing: 0.06em; min-height: 14px; }
-
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 
 .form-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 .checkbox-wrap { display: flex; align-items: center; gap: 8px; cursor: pointer; }
@@ -311,6 +320,7 @@ html, body {
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
   margin-bottom: 0.75rem;
+  text-decoration: none;
 }
 .social-btn:hover { background: var(--sand-light); border-color: var(--tan-light); }
 
@@ -364,20 +374,31 @@ html, body {
     </div>
   </div>
 
-  <!-- RIGHT: Laravel-ready forms with POST method (no JavaScript) -->
+  <!-- RIGHT: Laravel-ready forms with POST method (NO JavaScript interception) -->
   <div class="panel-right">
     <div class="form-wrap">
 
       <div class="form-logo">Psoricure</div>
 
+      <!-- Display global session messages from Laravel controller -->
+      @if(session('success'))
+        <div class="global-alert success">{{ session('success') }}</div>
+      @endif
+      @if(session('error'))
+        <div class="global-alert error">{{ session('error') }}</div>
+      @endif
+      @if($errors->any() && !$errors->has('email') && !$errors->has('password'))
+        <div class="global-alert error">{{ $errors->first() }}</div>
+      @endif
+
       <div class="auth-tabs">
-        <div class="auth-tab active" data-tab="login">Sign In</div>
-        <div class="auth-tab" data-tab="register">Create Account</div>
+        <div class="auth-tab {{ request()->is('login') || !request()->is('register') ? 'active' : '' }}" data-tab="login">Sign In</div>
+        <div class="auth-tab {{ request()->is('register') ? 'active' : '' }}" data-tab="register">Create Account</div>
       </div>
 
-      <!-- LOGIN FORM - Pure HTML/CSS, Laravel compatible -->
+      <!-- LOGIN FORM - Pure Laravel with Blade -->
       <div class="form-panel active" id="panel-login">
-        <form method="POST" action="{{route('user-login')}}" accept-charset="UTF-8">
+        <form method="POST" action="{{ route('user-login') }}" accept-charset="UTF-8">
           @csrf
           
           <div class="form-title">Welcome back.</div>
@@ -438,9 +459,9 @@ html, body {
         </div>
       </div>
 
-      <!-- REGISTER FORM - Pure HTML/CSS, Laravel compatible -->
+      <!-- REGISTER FORM - Pure Laravel with Blade -->
       <div class="form-panel" id="panel-register">
-        <form method="POST" action="{{route('register-user')}}" accept-charset="UTF-8">
+        <form method="POST" action="{{ route('register-user') }}" accept-charset="UTF-8">
           @csrf
           
           <div class="step-dots">
@@ -530,10 +551,10 @@ html, body {
   </div>
 </div>
 
-<!-- Minimal vanilla JavaScript for tab switching only (no form validation or submission logic) -->
+<!-- Minimal vanilla JavaScript for tab switching ONLY (NO form interception) -->
 <script>
 (function() {
-  // Tab switching functionality (pure UI, no form handling)
+  // Tab switching functionality (pure UI, NO form handling or submission blocking)
   const loginTab = document.querySelector('.auth-tab[data-tab="login"]');
   const registerTab = document.querySelector('.auth-tab[data-tab="register"]');
   const loginPanel = document.getElementById('panel-login');
@@ -573,6 +594,16 @@ html, body {
       video.style.display = 'none';
       fallbackImg.style.display = 'block';
     });
+  }
+
+  // Set active tab based on URL or errors (if there are validation errors, show the correct tab)
+  const hasRegisterErrors = {{ $errors->has('first_name') || $errors->has('last_name') || $errors->has('terms') ? 'true' : 'false' }};
+  const hasLoginErrors = {{ $errors->has('email') || $errors->has('password') ? 'true' : 'false' }};
+  
+  if (hasRegisterErrors) {
+    switchTab('register');
+  } else if (hasLoginErrors) {
+    switchTab('login');
   }
 })();
 </script>

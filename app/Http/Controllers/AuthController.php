@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
-class UserController extends Controller
+class AuthController extends Controller
 {
     public function createUser(Request $request){
 

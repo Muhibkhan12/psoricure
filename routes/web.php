@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
@@ -17,7 +19,8 @@ Route::get('/contact', function(){
     return view('contact');
 });
 Route::prefix('user')->group(function(){
-    Route::post('/register',[UserController::class,'createUser'])->name('register-user');
+    Route::post('/register',[AuthController::class,'createUser'])->name('register-user');
+    Route::post('/login',[AuthController::class,'loginUser'])->name('user-login');
 });
 Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[AdminController::class,'adminDashboard']);

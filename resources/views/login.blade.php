@@ -377,7 +377,7 @@ html, body {
 
       <!-- LOGIN FORM - Pure HTML/CSS, Laravel compatible -->
       <div class="form-panel active" id="panel-login">
-        <form method="POST" action="/login" accept-charset="UTF-8">
+        <form method="POST" action="{{route('user-login')}}" accept-charset="UTF-8">
           @csrf
           
           <div class="form-title">Welcome back.</div>

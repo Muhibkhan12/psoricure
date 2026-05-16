@@ -710,12 +710,6 @@
             <div class="profile-dropdown" id="profileDropdown">
                 @auth
                     <div class="dropdown-header">
-                        <div class="dropdown-avatar">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                                <circle cx="12" cy="7" r="4" />
-                            </svg>
-                        </div>
                         <div class="dropdown-user-info">
                             <span class="user-name">{{ Auth::user()->first_name ?? Auth::user()->name ?? 'User' }} {{ Auth::user()->last_name ?? '' }}</span>
                             <span class="user-email">{{ Auth::user()->email ?? 'user@psoricure.com' }}</span>
@@ -724,7 +718,7 @@
                     
                     <div class="dropdown-divider"></div>
                     
-                    <a href="{{ url('/profile') }}" class="dropdown-item">
+                    <a href="{{ url('/home') }}" class="dropdown-item">
                         <svg viewBox="0 0 24 24">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                             <circle cx="12" cy="7" r="4"/>
@@ -785,7 +779,7 @@
                     
                     <div class="dropdown-divider"></div>
                     
-                    <a href="{{ route('user-login') }}" class="dropdown-item">
+                    <a href="{{ route('login-page') }}" class="dropdown-item">
                         <svg viewBox="0 0 24 24">
                             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
                             <polyline points="10 17 15 12 10 7"/>

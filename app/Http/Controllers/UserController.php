@@ -10,5 +10,10 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    
+    public function showUserDashboard(){
+        return view('user.dashboard');
+    }
+    public function showProfile(){
+        return view('user.profile');
+    }
 }

@@ -414,7 +414,7 @@
 </head>
 <body>
 
-{{-- @include('user.sidebar') --}}
+@include('sections.userSidebar')
 
 <div class="main-content">
   <!-- Flash Messages -->

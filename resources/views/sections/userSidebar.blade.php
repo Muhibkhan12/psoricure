@@ -1,5 +1,5 @@
 <?php
-// sidebar.blade.php - Sidebar and Header Component
+// sidebar.blade.php - Simplified Sidebar and Header Component (No Routes)
 ?>
 <style>
 /* Sidebar & Header Styles - Completely isolated */
@@ -97,7 +97,6 @@
   border-radius: 6px;
   color: rgba(245, 239, 228, 0.48);
   font-size: 12px;
-  cursor: pointer;
   transition: all 0.17s;
   text-decoration: none;
 }
@@ -187,7 +186,6 @@
   border-radius: 6px;
   color: rgba(158, 90, 72, 0.7);
   font-size: 12px;
-  cursor: pointer;
   transition: all 0.17s;
   margin-top: 4px;
   text-decoration: none;
@@ -250,6 +248,7 @@
   cursor: pointer;
   transition: background 0.17s;
   position: relative;
+  text-decoration: none;
 }
 
 .icon-btn:hover {
@@ -291,20 +290,20 @@
   background: var(--ink);
   color: var(--cream);
   transition: background 0.2s;
+  text-decoration: none;
 }
 
 .pill-sm:hover {
   background: var(--bark-dark);
 }
 
-/* Main Content Container - CRITICAL: no overlap */
-.main-content-container {
+/* Main Content Container - No overlap */
+.main-content {
   margin-left: var(--sidebar-w);
   margin-top: 56px;
   padding: 1.5rem;
   min-height: calc(100vh - 56px);
   background: var(--off-white);
-  overflow-y: auto;
 }
 
 /* Mobile Responsive */
@@ -327,7 +326,7 @@
     left: 0;
   }
   
-  .main-content-container {
+  .main-content {
     margin-left: 0;
   }
   
@@ -366,6 +365,28 @@
 .mobile-overlay.active {
   display: block;
 }
+
+/* Toast Message */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink);
+  color: var(--cream);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  z-index: 2000;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 </style>
 
 <!-- Mobile Menu Button -->
@@ -387,7 +408,7 @@
   
   <nav class="sb-nav">
     <div class="sb-section">Main</div>
-    <a href="#" class="sb-item" data-page="dashboard">
+    <a href="{{route('user-dashboard')}}" class="sb-item">
       <svg class="sb-icon" viewBox="0 0 24 24">
         <rect x="3" y="3" width="7" height="7" rx="1"/>
         <rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -396,7 +417,8 @@
       </svg>
       Dashboard
     </a>
-    <a href="#" class="sb-item" data-page="orders">
+    
+    <a href="{{route('orders-page')}}" class="sb-item">
       <svg class="sb-icon" viewBox="0 0 24 24">
         <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -405,14 +427,16 @@
       My Orders
       <span class="sb-badge">3</span>
     </a>
-    <a href="#" class="sb-item" data-page="wishlist">
+    
+    <a href="/wishlist" class="sb-item">
       <svg class="sb-icon" viewBox="0 0 24 24">
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
       </svg>
       Wishlist
       <span class="sb-badge">5</span>
     </a>
-    <a href="#" class="sb-item" data-page="profile">
+    
+    <a href="{{route('Userprofile-page')}}" class="sb-item">
       <svg class="sb-icon" viewBox="0 0 24 24">
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
         <circle cx="12" cy="7" r="4"/>
@@ -421,14 +445,16 @@
     </a>
     
     <div class="sb-section">Shop</div>
-    <a href="#" class="sb-item" data-page="addresses">
+    
+    <a href="/addresses" class="sb-item">
       <svg class="sb-icon" viewBox="0 0 24 24">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
         <circle cx="12" cy="10" r="3"/>
       </svg>
       Addresses
     </a>
-    <a href="#" class="sb-item" data-page="payments">
+    
+    <a href="/payments" class="sb-item">
       <svg class="sb-icon" viewBox="0 0 24 24">
         <rect x="1" y="4" width="22" height="16" rx="2"/>
         <line x1="1" y1="10" x2="23" y2="10"/>
@@ -437,7 +463,8 @@
     </a>
     
     <div class="sb-section">Support</div>
-    <a href="#" class="sb-logout" id="logoutBtn">
+    
+    <a href="/logout" class="sb-logout" onclick="event.preventDefault(); alert('Logged out successfully');">
       <svg class="sb-icon" viewBox="0 0 24 24">
         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
         <polyline points="16 17 21 12 16 7"/>
@@ -463,19 +490,22 @@
     <div class="page-crumb" id="pageCrumb">Overview</div>
   </div>
   <div class="header-actions">
-    <div class="icon-btn" id="notifIcon">
+    <a href="/notifications" class="icon-btn">
       <div class="notif-dot"></div>
       <svg viewBox="0 0 24 24">
         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
         <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
       </svg>
-    </div>
-    <button class="pill-sm" id="shopNowBtn">Shop Now</button>
+    </a>
+    <a href="/shop" class="pill-sm">Shop Now</a>
   </div>
 </header>
 
+<!-- Toast Container -->
+<div class="toast" id="toastMessage"></div>
+
 <script>
-// Mobile menu functionality
+// Mobile menu functionality (only for responsive layout)
 const mobileToggle = document.getElementById('mobileMenuToggle');
 const sidebar = document.getElementById('sidebar');
 const mobileOverlay = document.getElementById('mobileOverlay');
@@ -506,31 +536,55 @@ window.addEventListener('resize', () => {
   }
 });
 
-// Navigation function to be used by main page
-window.updatePage = function(pageName, title, crumb) {
-  document.getElementById('pageTitle').textContent = title;
-  document.getElementById('pageCrumb').textContent = crumb;
+// Update page title and crumb based on current URL
+function updatePageInfo() {
+  const path = window.location.pathname;
+  const titles = {
+    '/dashboard': { title: 'Dashboard', crumb: 'Overview' },
+    '/orders': { title: 'My Orders', crumb: 'Order History' },
+    '/wishlist': { title: 'Wishlist', crumb: 'Saved Items' },
+    '/profile': { title: 'Profile', crumb: 'Settings' },
+    '/addresses': { title: 'Addresses', crumb: 'Delivery Locations' },
+    '/payments': { title: 'Payments', crumb: 'Transaction History' },
+    '/notifications': { title: 'Notifications', crumb: 'Updates & Alerts' },
+    '/shop': { title: 'Shop', crumb: 'Browse Products' }
+  };
+  
+  const pageInfo = titles[path] || { title: 'Dashboard', crumb: 'Overview' };
+  document.getElementById('pageTitle').textContent = pageInfo.title;
+  document.getElementById('pageCrumb').textContent = pageInfo.crumb;
   
   // Update active state in sidebar
   document.querySelectorAll('.sb-item').forEach(item => {
-    if (item.dataset.page === pageName) {
+    const href = item.getAttribute('href');
+    if (href === path) {
       item.classList.add('active');
     } else {
       item.classList.remove('active');
     }
   });
+}
+
+// Simple toast function
+window.showToast = function(message, type = 'success') {
+  const toast = document.getElementById('toastMessage');
+  toast.textContent = message;
+  toast.style.background = type === 'error' ? 'var(--danger)' : 'var(--ink)';
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
 };
 
-// Logout function
-document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (confirm('Are you sure you want to logout?')) {
-    window.location.href = '/logout';
-  }
-});
+// Initialize
+updatePageInfo();
 
-// Notification icon
-document.getElementById('notifIcon')?.addEventListener('click', () => {
-  alert('You have 4 new notifications');
+// Handle navigation for demo (prevents actual page load if needed)
+document.querySelectorAll('.sb-item, .icon-btn, .pill-sm').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('/') && href !== '/logout') {
+      e.preventDefault();
+      window.location.href = href;
+    }
+  });
 });
 </script>

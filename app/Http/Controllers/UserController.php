@@ -16,4 +16,7 @@ class UserController extends Controller
     public function showProfile(){
         return view('user.profile');
     }
+    public function showOrderPage(){
+        return view('user.order');
+    }
 }

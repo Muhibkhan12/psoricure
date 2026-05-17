@@ -633,68 +633,6 @@ body {
     </div>
   </div>
 
-  <!-- Orders Page -->
-  <div id="ordersPage" class="page">
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">My Orders</div>
-          <div class="card-sub">Complete order history</div>
-        </div>
-        <button class="action-btn outline" onclick="alert('Exporting orders...')">Export</button>
-      </div>
-      <div class="card-body">
-        <table class="orders-table">
-          <thead>
-            <tr>
-              <th>Order ID</th>
-              <th>Product</th>
-              <th>Date</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><span class="order-id">PSC-4820</span></td><td>Barrier Shield Mist</td><td>14 May 2026</td><td>€42.00</td><td><span class="status-pill shipped">Shipped</span></td><td><button class="action-btn outline" onclick="alert('Tracking order')">Track</button></td></tr>
-            <tr><td><span class="order-id">PSC-4801</span></td><td>Calm Restore Serum</td><td>02 May 2026</td><td>€58.00</td><td><span class="status-pill delivered">Delivered</span></td><td><button class="action-btn outline" onclick="alert('Reorder product')">Reorder</button></td></tr>
-            <tr><td><span class="order-id">PSC-4789</span></td><td>The Calm Ritual Set</td><td>18 Apr 2026</td><td>€148.00</td><td><span class="status-pill delivered">Delivered</span></td><td><button class="action-btn outline" onclick="alert('Write review')">Review</button></td></tr>
-            <tr><td><span class="order-id">PSC-4762</span></td><td>Night Renewal Balm</td><td>30 Mar 2026</td><td>€74.00</td><td><span class="status-pill delivered">Delivered</span></td><td><button class="action-btn outline" onclick="alert('Reorder product')">Reorder</button></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Wishlist Page -->
-  <div id="wishlistPage" class="page">
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">My Wishlist</div>
-          <div class="card-sub">Your saved items</div>
-        </div>
-        <button class="action-btn" onclick="alert('All items added to cart')">Add All to Cart</button>
-      </div>
-      <div class="card-body">
-        <div style="display:grid; gap:1rem;">
-          <div class="product-item">
-            <div class="product-thumb"><svg width="24" height="40" viewBox="0 0 80 160"><rect x="14" y="28" width="52" height="118" rx="6" fill="#C4A882" opacity="0.85"/><rect x="30" y="10" width="20" height="20" rx="3" fill="#C4A882" opacity="0.6"/></svg></div>
-            <div class="product-info"><div class="product-name">Phyto Repair Concentrate</div><div class="product-category">Serum</div></div>
-            <div class="product-stats"><div class="product-revenue">€72.00</div></div>
-            <button class="action-btn" onclick="alert('Added to cart')">Add to Cart</button>
-          </div>
-          <div class="product-item">
-            <div class="product-thumb"><svg width="24" height="40" viewBox="0 0 80 160"><rect x="14" y="28" width="52" height="118" rx="6" fill="#6B8F5E" opacity="0.85"/><rect x="30" y="10" width="20" height="20" rx="3" fill="#6B8F5E" opacity="0.6"/></svg></div>
-            <div class="product-info"><div class="product-name">Micro-Probiotic Toner</div><div class="product-category">Toner</div></div>
-            <div class="product-stats"><div class="product-revenue">€48.00</div></div>
-            <button class="action-btn" onclick="alert('Added to cart')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Profile Page -->
   <div id="profilePage" class="page">
     <div class="card">

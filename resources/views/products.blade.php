@@ -43,27 +43,6 @@
             overflow-x: hidden;
         }
 
-        /* Custom cursor - only on desktop */
-        @media (hover: hover) and (pointer: fine) {
-            .cursor {
-                position: fixed;
-                width: 8px;
-                height: 8px;
-                background: #1C1917;
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 9999;
-                transform: translate(-50%, -50%);
-                transition: transform 0.15s ease, width 0.25s ease, height 0.25s ease;
-                mix-blend-mode: multiply;
-            }
-            .cursor.expand {
-                width: 40px;
-                height: 40px;
-                background: #C4A882;
-            }
-        }
-
         html {
             scroll-behavior: smooth;
         }
@@ -217,11 +196,24 @@
             border-radius: 4px;
         }
         
-        .modal-rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
+        .stock-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+        .stock-in {
+            background: #EEF4EB;
+            color: #6B8F5E;
+        }
+        .stock-low {
+            background: #FBF3E5;
+            color: #C4903A;
+        }
+        .stock-out {
+            background: #F9EDEA;
+            color: #9E5A48;
         }
         .ingredient-list {
             display: flex;
@@ -235,7 +227,6 @@
             border-radius: 50px;
             font-size: 11px;
             color: #1C1917;
-            letter-spacing: 0.03em;
         }
         .quantity-selector {
             display: flex;
@@ -287,83 +278,34 @@
                 font-size: 26px;
             }
         }
+        
+        /* Line clamp utility */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
 
-    @include('sections/header')
-<!-- Custom cursor -->
-<div class="cursor" id="cursor"></div>
+@include('sections.header')
 
-<!-- Simple Announcement Bar - Responsive -->
-<div class="bg-[#1C1917] text-[#F5EFE4] text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-center py-2 md:py-3 overflow-hidden">
+<!-- Announcement Bar -->
+<div class="bg-[#1C1917] text-[#F5EFE4] text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-center py-2 md:py-3 overflow-hidden" style="margin-top: 60px;">
     <div class="inline-flex gap-6 md:gap-8 animate-[ticker_22s_linear_infinite] whitespace-nowrap">
         <span>Free shipping on orders over €45 · Clinically validated formulas · 100% botanical origin · Cruelty-free · Dermatologist tested</span>
         <span>Free shipping on orders over €45 · Clinically validated formulas · 100% botanical origin · Cruelty-free · Dermatologist tested</span>
     </div>
 </div>
 
-
-
-<style>
-    @media (min-width: 768px) {
-        .main-nav {
-            padding: 0 1.5rem !important;
-        }
-        .main-nav div:first-child {
-            font-size: 22px !important;
-        }
-        .nav-links-desktop {
-            display: flex !important;
-        }
-        .main-nav svg {
-            width: 18px !important;
-            height: 18px !important;
-        }
-    }
-    @media (min-width: 1024px) {
-        .main-nav {
-            padding: 0 3rem !important;
-        }
-    }
-    @media (max-width: 767px) {
-        .main-nav {
-            padding: 0 1rem !important;
-        }
-        .main-nav div:first-child {
-            font-size: 16px !important;
-            letter-spacing: 0.15em !important;
-        }
-    }
-    .nav-links-desktop a:hover {
-        color: #1C1917 !important;
-    }
-    /* Add padding to body to account for fixed navbar */
-    body {
-        padding-top: 60px;
-    }
-    .announcement {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        right: 0;
-        z-index: 999;
-    }
-    .hero {
-        margin-top: 0;
-    }
-    @media (max-width: 768px) {
-        body {
-            padding-top: 60px;
-        }
-    }
-</style>
-
-<!-- HERO SECTION - Responsive -->
-<section class="hero relative w-full overflow-hidden bg-[#1A1714]" style="margin-top: 0;">
+<!-- Hero Section -->
+<section class="relative w-full overflow-hidden bg-[#1A1714]">
+    <!-- Video Background -->
     <div class="absolute inset-0">
-        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-70">
-            <source src="{{asset('videos/prodcut2.mp4')}}" type="video/mp4">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover">
+            <source src="{{ asset('videos/product2.mp4') }}" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
     </div>
@@ -375,14 +317,14 @@
                 pure ritual,<br>radiant skin
             </h1>
             <p class="text-[#E2D5C3] text-xs sm:text-sm md:text-base max-w-md leading-relaxed mb-6 md:mb-8">
-                Discover our core collection of four essential formulas — each crafted with clinical precision and botanical soul.
+                Discover our core collection of essential formulas — each crafted with clinical precision and botanical soul.
             </p>
             <a href="#products" class="inline-block border border-white text-white text-[10px] md:text-[11px] tracking-[0.1em] uppercase px-6 md:px-8 py-2.5 md:py-3 rounded-full hover:bg-white hover:text-[#1C1917] transition duration-300">shop collection →</a>
         </div>
     </div>
 </section>
 
-<!-- PRODUCTS SECTION - Fully Responsive Grid -->
+<!-- Products Section -->
 <section id="products" class="py-12 md:py-20 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-12 bg-[#FAF7F2]">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-10 md:mb-16">
@@ -395,16 +337,16 @@
             <p class="text-[#9A8F83] text-xs sm:text-sm max-w-lg mx-auto mt-2 md:mt-3 px-4">Clinically validated, botanically pure — each formula targets specific skin needs.</p>
         </div>
 
-        <!-- Responsive Product Grid -->
+        <!-- Product Grid - Static HTML -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 lg:gap-8">
             
             <!-- Product 1 -->
-            <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300" data-product="1">
+            <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-product="1">
                 <div class="relative overflow-hidden bg-[#F5EFE4] aspect-[3/4]">
                     <img class="product-image w-full h-full object-cover transition duration-500" 
                          src="https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?w=600&h=800&fit=crop" 
                          alt="Calm Restore Serum">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center pointer-events-none">
                         <span class="bg-white text-[#1C1917] text-[10px] md:text-[11px] tracking-wide uppercase px-4 md:px-5 py-1.5 md:py-2 rounded-full font-medium">Quick view</span>
                     </div>
                 </div>
@@ -414,21 +356,21 @@
                         <span class="text-[10px] md:text-[11px] font-medium text-[#C4A882]">⭐ 4.9</span>
                     </div>
                     <h3 class="font-medium text-[#1C1917] text-sm md:text-base mb-1">Calm Restore Serum</h3>
-                    <p class="text-[#9A8F83] text-[10px] md:text-xs mb-3">Hyaluronic acid + oat lipid complex</p>
+                    <p class="text-[#9A8F83] text-[10px] md:text-xs mb-3 line-clamp-2">Deeply hydrating serum with hyaluronic acid and oat lipid complex for sensitive skin.</p>
                     <div class="flex items-center justify-between mt-2">
                         <span class="font-semibold text-[#1C1917] text-base md:text-lg">€58</span>
-                        <button class="btn-hover border border-[#E2D5C3] text-[10px] md:text-[11px] tracking-wide uppercase px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-[#1C1917] hover:text-white transition add-to-cart-btn" data-name="Calm Restore Serum" data-price="58">add</button>
+                        <button class="btn-hover border border-[#E2D5C3] text-[10px] md:text-[11px] tracking-wide uppercase px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-[#1C1917] hover:text-white transition add-to-cart" data-name="Calm Restore Serum" data-price="58">add</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 2 -->
-            <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300" data-product="2">
+            <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-product="2">
                 <div class="relative overflow-hidden bg-[#F5EFE4] aspect-[3/4]">
                     <img class="product-image w-full h-full object-cover transition duration-500" 
                          src="https://images.pexels.com/photos/4041394/pexels-photo-4041394.jpeg?w=600&h=800&fit=crop" 
                          alt="Barrier Shield Mist">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center pointer-events-none">
                         <span class="bg-white text-[#1C1917] text-[10px] md:text-[11px] tracking-wide uppercase px-4 md:px-5 py-1.5 md:py-2 rounded-full font-medium">Quick view</span>
                     </div>
                 </div>
@@ -438,21 +380,21 @@
                         <span class="text-[10px] md:text-[11px] font-medium text-[#C4A882]">⭐ 4.8</span>
                     </div>
                     <h3 class="font-medium text-[#1C1917] text-sm md:text-base mb-1">Barrier Shield Mist</h3>
-                    <p class="text-[#9A8F83] text-[10px] md:text-xs mb-3">Ceramide + prebiotic thermal water</p>
+                    <p class="text-[#9A8F83] text-[10px] md:text-xs mb-3 line-clamp-2">Ultra-fine mist with ceramides and prebiotic thermal water for instant soothing.</p>
                     <div class="flex items-center justify-between mt-2">
                         <span class="font-semibold text-[#1C1917] text-base md:text-lg">€42</span>
-                        <button class="btn-hover border border-[#E2D5C3] text-[10px] md:text-[11px] tracking-wide uppercase px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-[#1C1917] hover:text-white transition add-to-cart-btn" data-name="Barrier Shield Mist" data-price="42">add</button>
+                        <button class="btn-hover border border-[#E2D5C3] text-[10px] md:text-[11px] tracking-wide uppercase px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-[#1C1917] hover:text-white transition add-to-cart" data-name="Barrier Shield Mist" data-price="42">add</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 3 -->
-            <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300" data-product="3">
+            <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-product="3">
                 <div class="relative overflow-hidden bg-[#1A1714] aspect-[3/4]">
                     <img class="product-image w-full h-full object-cover transition duration-500" 
                          src="https://images.pexels.com/photos/3735596/pexels-photo-3735596.jpeg?w=600&h=800&fit=crop" 
                          alt="Night Renewal Balm">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center pointer-events-none">
                         <span class="bg-white text-[#1C1917] text-[10px] md:text-[11px] tracking-wide uppercase px-4 md:px-5 py-1.5 md:py-2 rounded-full font-medium">Quick view</span>
                     </div>
                 </div>
@@ -462,21 +404,21 @@
                         <span class="text-[10px] md:text-[11px] font-medium text-[#C4A882]">⭐ 5.0</span>
                     </div>
                     <h3 class="font-medium text-[#1C1917] text-sm md:text-base mb-1">Night Renewal Balm</h3>
-                    <p class="text-[#9A8F83] text-[10px] md:text-xs mb-3">Bakuchiol + evening primrose</p>
+                    <p class="text-[#9A8F83] text-[10px] md:text-xs mb-3 line-clamp-2">Rich transformative balm with bakuchiol and evening primrose for overnight repair.</p>
                     <div class="flex items-center justify-between mt-2">
                         <span class="font-semibold text-[#1C1917] text-base md:text-lg">€74</span>
-                        <button class="btn-hover border border-[#E2D5C3] text-[10px] md:text-[11px] tracking-wide uppercase px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-[#1C1917] hover:text-white transition add-to-cart-btn" data-name="Night Renewal Balm" data-price="74">add</button>
+                        <button class="btn-hover border border-[#E2D5C3] text-[10px] md:text-[11px] tracking-wide uppercase px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-[#1C1917] hover:text-white transition add-to-cart" data-name="Night Renewal Balm" data-price="74">add</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 4 -->
-            <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300" data-product="4">
+            <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-product="4">
                 <div class="relative overflow-hidden bg-[#F5EFE4] aspect-[3/4]">
                     <img class="product-image w-full h-full object-cover transition duration-500" 
                          src="https://images.pexels.com/photos/4041395/pexels-photo-4041395.jpeg?w=600&h=800&fit=crop" 
                          alt="Radiance Day Oil">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center pointer-events-none">
                         <span class="bg-white text-[#1C1917] text-[10px] md:text-[11px] tracking-wide uppercase px-4 md:px-5 py-1.5 md:py-2 rounded-full font-medium">Quick view</span>
                     </div>
                 </div>
@@ -486,16 +428,16 @@
                         <span class="text-[10px] md:text-[11px] font-medium text-[#C4A882]">⭐ 4.9</span>
                     </div>
                     <h3 class="font-medium text-[#1C1917] text-sm md:text-base mb-1">Radiance Day Oil</h3>
-                    <p class="text-[#9A8F83] text-[10px] md:text-xs mb-3">Vitamin C + marula & rosehip</p>
+                    <p class="text-[#9A8F83] text-[10px] md:text-xs mb-3 line-clamp-2">Brightening facial oil with Vitamin C, marula and rosehip for natural dewy glow.</p>
                     <div class="flex items-center justify-between mt-2">
                         <span class="font-semibold text-[#1C1917] text-base md:text-lg">€65</span>
-                        <button class="btn-hover border border-[#E2D5C3] text-[10px] md:text-[11px] tracking-wide uppercase px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-[#1C1917] hover:text-white transition add-to-cart-btn" data-name="Radiance Day Oil" data-price="65">add</button>
+                        <button class="btn-hover border border-[#E2D5C3] text-[10px] md:text-[11px] tracking-wide uppercase px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-[#1C1917] hover:text-white transition add-to-cart" data-name="Radiance Day Oil" data-price="65">add</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Promise Banner - Responsive -->
+        <!-- Promise Banner -->
         <div class="mt-12 md:mt-16 text-center">
             <div class="inline-flex flex-wrap justify-center gap-4 md:gap-8 text-[9px] md:text-[11px] tracking-[0.1em] uppercase text-[#9A8F83]">
                 <span class="flex items-center gap-1.5 md:gap-2"><span class="w-1.5 h-1.5 bg-[#C4A882] rounded-full"></span> 97% natural origin</span>
@@ -506,7 +448,7 @@
     </div>
 </section>
 
-<!-- Testimonial - Responsive -->
+<!-- Testimonial -->
 <section class="py-12 md:py-16 lg:py-20 bg-[#F5EFE4]">
     <div class="max-w-6xl mx-auto px-5 md:px-8 lg:px-12 text-center">
         <div class="max-w-2xl mx-auto">
@@ -517,7 +459,7 @@
     </div>
 </section>
 
-<!-- Footer - Responsive Grid -->
+<!-- Footer -->
 <footer class="bg-[#FAF7F2] border-t border-[#E2D5C3] pt-10 md:pt-12 pb-6 md:pb-8 px-5 md:px-8 lg:px-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         <div>
@@ -558,192 +500,125 @@
     </div>
 </footer>
 
-<!-- MODAL STRUCTURE -->
+<!-- Modal -->
 <div id="productModal" class="modal">
     <div class="modal-content">
         <div class="modal-close" id="closeModal">&times;</div>
         <div class="modal-image">
-            <img id="modalProductImage" src="" alt="Product">
+            <img id="modalImage" src="" alt="Product">
         </div>
         <div class="modal-details">
-            <div class="modal-rating">
-                <span id="modalProductRating" class="text-[#C4A882] text-sm">⭐ 4.9</span>
-                <span class="text-[#9A8F83] text-xs">(124 reviews)</span>
-            </div>
-            <h2 id="modalProductName" class="font-serif text-2xl md:text-3xl font-light text-[#1C1917] mb-2">Product Name</h2>
-            <p id="modalProductTagline" class="text-[#8C6E50] text-[10px] md:text-xs tracking-wide uppercase mb-3">Restore · Calm · Hydrate</p>
-            <p id="modalProductDesc" class="text-[#9A8F83] text-xs md:text-sm leading-relaxed mb-4">Complete product description goes here.</p>
+            <h2 id="modalName" class="font-serif text-2xl md:text-3xl font-light text-[#1C1917] mb-2">Product Name</h2>
+            <p id="modalPrice" class="text-2xl md:text-3xl font-light text-[#1C1917] mb-4">€0</p>
+            <p id="modalDesc" class="text-[#9A8F83] text-xs md:text-sm leading-relaxed mb-4">Product description goes here.</p>
             
             <div class="mb-4">
                 <h4 class="text-[9px] md:text-[10px] tracking-[0.14em] uppercase text-[#9A8F83] mb-2">Key Ingredients</h4>
                 <div id="modalIngredients" class="ingredient-list"></div>
             </div>
             
-            <div class="mb-4">
-                <h4 class="text-[9px] md:text-[10px] tracking-[0.14em] uppercase text-[#9A8F83] mb-2">Benefits</h4>
-                <ul id="modalBenefits" class="text-[12px] md:text-[13px] text-[#1C1917] space-y-1 list-disc pl-4"></ul>
-            </div>
-            
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6 pt-4 border-t border-[#E2D5C3]">
-                <div>
-                    <span class="text-[#9A8F83] text-[10px] md:text-xs block">Price</span>
-                    <span id="modalProductPrice" class="font-serif text-2xl md:text-3xl font-light text-[#1C1917]">€58</span>
+                <div class="quantity-selector">
+                    <button class="quantity-btn" id="decrementQty">−</button>
+                    <span class="quantity-number" id="modalQty">1</span>
+                    <button class="quantity-btn" id="incrementQty">+</button>
                 </div>
-                <div class="flex items-center gap-3 md:gap-4">
-                    <div class="quantity-selector">
-                        <button class="quantity-btn" id="decrementQty">−</button>
-                        <span class="quantity-number" id="modalQty">1</span>
-                        <button class="quantity-btn" id="incrementQty">+</button>
-                    </div>
-                    <button id="modalAddToCart" class="bg-[#1C1917] text-white text-[10px] md:text-[11px] tracking-[0.1em] uppercase px-5 md:px-6 py-2.5 md:py-3 rounded-full hover:bg-[#8C6E50] transition">Add to Cart</button>
-                </div>
+                <button id="modalAddToCart" class="bg-[#1C1917] text-white text-[10px] md:text-[11px] tracking-[0.1em] uppercase px-5 md:px-6 py-2.5 md:py-3 rounded-full hover:bg-[#8C6E50] transition">Add to Cart</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Minimal JavaScript - Only for Modal -->
 <script>
-    // ========== NAVBAR SCROLL HIDE FUNCTIONALITY ==========
-    const nav = document.querySelector('.main-nav');
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-    
-    function handleScroll() {
-        const currentScrollY = window.scrollY;
-        
-        // Add scrolled class for shadow effect (when scrolled past 10px)
-        if (currentScrollY > 10) {
-            nav.classList.add('nav-scrolled');
-        } else {
-            nav.classList.remove('nav-scrolled');
-        }
-        
-        // Hide navbar on scroll down, show on scroll up
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            // Scrolling DOWN - hide navbar
-            nav.classList.add('nav-hidden');
-        } else if (currentScrollY < lastScrollY) {
-            // Scrolling UP - show navbar
-            nav.classList.remove('nav-hidden');
-        }
-        
-        lastScrollY = currentScrollY;
-        ticking = false;
-    }
-    
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(handleScroll);
-            ticking = true;
-        }
-    });
-    
-    // Initial call to set correct state
-    handleScroll();
-    
-    // ========== PRODUCT DATABASE ==========
+    // Product data (static, no JSON parse needed)
     const products = {
         1: {
             name: "Calm Restore Serum",
-            tagline: "Restore · Calm · Hydrate",
+            price: "€58",
+            desc: "A deeply hydrating, soothing serum formulated for sensitive and reactive skin. Features hyaluronic acid to plump and oat lipid complex to restore the skin barrier.",
             image: "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?w=800&h=1000&fit=crop",
-            price: 58,
-            rating: "⭐ 4.9",
-            description: "A deeply hydrating, soothing serum formulated for sensitive and reactive skin. Features hyaluronic acid to plump and oat lipid complex to restore the skin barrier. Lightweight, fast-absorbing, and fragrance-free.",
-            ingredients: ["Hyaluronic Acid", "Oat Lipid Complex", "Niacinamide", "Glycerin", "Panthenol"],
-            benefits: ["Intense 72-hour hydration", "Strengthens skin barrier function", "Reduces redness & irritation", "Non-comedogenic", "Suitable for all skin types"]
+            ingredients: ["Hyaluronic Acid", "Oat Lipid Complex", "Niacinamide", "Glycerin", "Panthenol"]
         },
         2: {
             name: "Barrier Shield Mist",
-            tagline: "Shield · Protect · Balance",
+            price: "€42",
+            desc: "An ultra-fine, refreshing mist that instantly calms and reinforces the skin's natural defense system. Ceramides and prebiotic thermal water work together.",
             image: "https://images.pexels.com/photos/4041394/pexels-photo-4041394.jpeg?w=800&h=1000&fit=crop",
-            price: 42,
-            rating: "⭐ 4.8",
-            description: "An ultra-fine, refreshing mist that instantly calms and reinforces the skin's natural defense system. Ceramides and prebiotic thermal water work together to strengthen the microbiome.",
-            ingredients: ["Ceramide NP", "Prebiotic Thermal Water", "Squalane", "Allantoin", "Green Tea Extract"],
-            benefits: ["Instant soothing relief", "Reinforces skin barrier", "Balances microbiome", "Sets makeup", "Use throughout the day"]
+            ingredients: ["Ceramide NP", "Prebiotic Thermal Water", "Squalane", "Allantoin", "Green Tea Extract"]
         },
         3: {
             name: "Night Renewal Balm",
-            tagline: "Renew · Repair · Soften",
+            price: "€74",
+            desc: "A rich, transformative night balm that works while you sleep. Bakuchiol smooths fine lines, while evening primrose oil deeply nourishes.",
             image: "https://images.pexels.com/photos/3735596/pexels-photo-3735596.jpeg?w=800&h=1000&fit=crop",
-            price: 74,
-            rating: "⭐ 5.0",
-            description: "A rich, transformative night balm that works while you sleep. Bakuchiol (a natural retinol alternative) smooths fine lines, while evening primrose oil deeply nourishes.",
-            ingredients: ["Bakuchiol", "Evening Primrose Oil", "Shea Butter", "Rosehip Oil", "Vitamin E"],
-            benefits: ["Reduces fine lines", "Improves skin elasticity", "Overnight repair", "Gentle retinol alternative", "Wake up radiant"]
+            ingredients: ["Bakuchiol", "Evening Primrose Oil", "Shea Butter", "Rosehip Oil", "Vitamin E"]
         },
         4: {
             name: "Radiance Day Oil",
-            tagline: "Radiance · Illuminate · Even",
+            price: "€65",
+            desc: "A brightening, fast-absorbing facial oil that delivers instant luminosity. Vitamin C from Kakadu plum combined with marula and rosehip oils.",
             image: "https://images.pexels.com/photos/4041395/pexels-photo-4041395.jpeg?w=800&h=1000&fit=crop",
-            price: 65,
-            rating: "⭐ 4.9",
-            description: "A brightening, fast-absorbing facial oil that delivers instant luminosity. Vitamin C from Kakadu plum combined with cold-pressed marula and rosehip oils for a natural dewy glow.",
-            ingredients: ["Vitamin C", "Marula Oil", "Rosehip Oil", "Jojoba Oil", "Sea Buckthorn"],
-            benefits: ["Brightens dark spots", "Antioxidant protection", "Improves texture", "Natural dewy finish", "Wears under makeup"]
+            ingredients: ["Vitamin C", "Marula Oil", "Rosehip Oil", "Jojoba Oil", "Sea Buckthorn"]
         }
     };
 
-    let currentProductId = null;
-    let currentQuantity = 1;
-
+    // DOM Elements
     const modal = document.getElementById('productModal');
-    const closeModal = document.getElementById('closeModal');
-    const modalProductImage = document.getElementById('modalProductImage');
-    const modalProductName = document.getElementById('modalProductName');
-    const modalProductTagline = document.getElementById('modalProductTagline');
-    const modalProductRating = document.getElementById('modalProductRating');
-    const modalProductDesc = document.getElementById('modalProductDesc');
-    const modalProductPrice = document.getElementById('modalProductPrice');
+    const modalImage = document.getElementById('modalImage');
+    const modalName = document.getElementById('modalName');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDesc = document.getElementById('modalDesc');
     const modalIngredients = document.getElementById('modalIngredients');
-    const modalBenefits = document.getElementById('modalBenefits');
     const modalQtySpan = document.getElementById('modalQty');
     const decrementBtn = document.getElementById('decrementQty');
     const incrementBtn = document.getElementById('incrementQty');
     const modalAddToCart = document.getElementById('modalAddToCart');
+    
+    let currentProduct = null;
+    let currentQuantity = 1;
 
     // Open modal
     document.querySelectorAll('.product-card').forEach(card => {
         card.addEventListener('click', (e) => {
-            if (e.target.classList.contains('add-to-cart-btn')) return;
+            if (e.target.classList.contains('add-to-cart')) return;
             const productId = card.getAttribute('data-product');
-            currentProductId = productId;
+            currentProduct = products[productId];
             currentQuantity = 1;
             modalQtySpan.textContent = currentQuantity;
-            const product = products[productId];
-            if (product) {
-                modalProductImage.src = product.image;
-                modalProductName.textContent = product.name;
-                modalProductTagline.textContent = product.tagline;
-                modalProductRating.textContent = product.rating;
-                modalProductDesc.textContent = product.description;
-                modalProductPrice.textContent = `€${product.price}`;
-                modalIngredients.innerHTML = product.ingredients.map(ing => `<span class="ingredient-badge">${ing}</span>`).join('');
-                modalBenefits.innerHTML = product.benefits.map(benefit => `<li>${benefit}</li>`).join('');
-            }
+            
+            modalImage.src = currentProduct.image;
+            modalName.textContent = currentProduct.name;
+            modalPrice.textContent = currentProduct.price;
+            modalDesc.textContent = currentProduct.desc;
+            modalIngredients.innerHTML = currentProduct.ingredients.map(i => `<span class="ingredient-badge">${i}</span>`).join('');
+            
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
     });
 
-    function closeModalFunc() {
+    // Close modal
+    function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
     }
-    closeModal.addEventListener('click', closeModalFunc);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModalFunc(); });
+    
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
+    // Quantity controls
     decrementBtn.addEventListener('click', () => { if (currentQuantity > 1) { currentQuantity--; modalQtySpan.textContent = currentQuantity; } });
     incrementBtn.addEventListener('click', () => { currentQuantity++; modalQtySpan.textContent = currentQuantity; });
 
+    // Add to cart
     modalAddToCart.addEventListener('click', () => {
-        const product = products[currentProductId];
-        if (product) alert(`Added ${currentQuantity} × ${product.name} to cart\nTotal: €${product.price * currentQuantity}`);
-        closeModalFunc();
+        alert(`Added ${currentQuantity} × ${currentProduct.name} to cart\nTotal: €${parseInt(currentProduct.price.replace('€', '')) * currentQuantity}`);
+        closeModal();
     });
 
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    // Add to cart from card
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const name = btn.getAttribute('data-name');
@@ -752,23 +627,16 @@
         });
     });
 
-    // Custom cursor (desktop only)
-    const cursor = document.getElementById('cursor');
-    if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-        document.querySelectorAll('a, button, .product-card, .btn-hover, .modal-close, .quantity-btn').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-        });
-    }
-    
-    // Smooth scroll to products
-    document.querySelector('a[href="#products"]')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector('#products')?.scrollIntoView({ behavior: 'smooth' });
+    // Navbar scroll hide
+    const nav = document.querySelector('.main-nav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 10) nav.classList.add('nav-scrolled');
+        else nav.classList.remove('nav-scrolled');
+        if (currentScroll > lastScroll && currentScroll > 100) nav.classList.add('nav-hidden');
+        else nav.classList.remove('nav-hidden');
+        lastScroll = currentScroll;
     });
 </script>
 </body>

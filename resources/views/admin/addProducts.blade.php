@@ -310,92 +310,89 @@
         @endforeach
       @endif
 
-      <form class="form-card" method="POST" action="{{ route('add-products') }}" enctype="multipart/form-data">
-        @csrf
-        
-        <div class="form-grid">
-          <!-- Left Column -->
-          <div>
+    <form class="form-card" method="POST" action="{{ route('add-products') }}" enctype="multipart/form-data">
+    @csrf
+
+    <div class="form-grid">
+
+        <!-- LEFT SIDE -->
+        <div>
+
             <div class="form-section">
-              <div class="section-title">Basic Information</div>
-              <div class="section-subtitle">Product details</div>
-              
-              <div class="form-group">
-                <label class="required">Product Name</label>
-                <input type="text" name="name" id="name" placeholder="e.g., Calm Restore Serum" value="{{ old('name') }}" required>
-              </div>
-              
-              <div class="form-group">
-                <label class="required">Slug</label>
-                <input type="text" name="slug" id="slug" placeholder="calm-restore-serum" value="{{ old('slug') }}" required>
-                <div class="slug-preview">Preview: <span id="slugPreview">/product/</span></div>
-              </div>
-              
-              <div class="form-group">
-                <label>Description</label>
-                <textarea name="description" placeholder="Write a detailed description...">{{ old('description') }}</textarea>
-              </div>
+                <div class="section-title">Basic Information</div>
+                <div class="section-subtitle">Product details</div>
+
+                <div class="form-group">
+                    <label class="required">Product Name</label>
+                    <input type="text" name="name" value="{{ old('name') }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Slug</label>
+                    <input type="text" name="slug" value="{{ old('slug') }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Description</label>
+                    <textarea name="description" required>{{ old('description') }}</textarea>
+                </div>
+
             </div>
-          </div>
-          
-          <!-- Right Column -->
-          <div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div>
+
             <div class="form-section">
-              <div class="section-title">Pricing & Inventory</div>
-              <div class="section-subtitle">Set price and stock</div>
-              
-              <div class="form-group">
-                <label class="required">Price (€)</label>
-                <input type="number" name="price" step="0.01" placeholder="0.00" value="{{ old('price') }}" required>
-              </div>
-              
-              <div class="form-group">
-                <label class="required">Stock Quantity</label>
-                <input type="number" name="stock" placeholder="0" value="{{ old('stock') }}" required>
-              </div>
-              
-              <div class="form-group">
-                <label class="required">Status</label>
-                <div class="status-group">
-                  <label class="status-option">
-                    <input type="radio" name="status" value="active" {{ old('status', 'active') == 'active' ? 'checked' : '' }}>
-                    <span>Active</span>
-                  </label>
-                  <label class="status-option">
-                    <input type="radio" name="status" value="draft" {{ old('status') == 'draft' ? 'checked' : '' }}>
-                    <span>Draft</span>
-                  </label>
+                <div class="section-title">Pricing & Inventory</div>
+                <div class="section-subtitle">Set price and stock</div>
+
+                <div class="form-group">
+                    <label class="required">Price</label>
+                    <input type="number" step="0.01" name="price" value="{{ old('price') }}" required>
                 </div>
-              </div>
-            </div>
-            
-            <div class="form-section" style="margin-top: 1.5rem;">
-              <div class="section-title">Product Media</div>
-              <div class="section-subtitle">Upload product image</div>
-              
-              <div class="form-group">
-                <label>Product Image</label>
-                <div class="image-upload" onclick="document.getElementById('imageInput').click()">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                  <p>Click to upload image</p>
-                  <small>PNG, JPG up to 5MB</small>
-                  <input type="file" name="image" id="imageInput" accept="image/*" style="display:none" onchange="previewImage(this)">
+
+                <div class="form-group">
+                    <label class="required">Stock</label>
+                    <input type="number" name="stock" value="{{ old('stock') }}" required>
                 </div>
-                <div id="imagePreview" class="image-preview"></div>
-              </div>
+
+                <div class="form-group">
+                    <label class="required">Status</label>
+
+                    <label>
+                        <input type="radio" name="status" value="available"
+                            {{ old('status', 'available') == 'available' ? 'checked' : '' }}>
+                        Available
+                    </label>
+
+                    <label>
+                        <input type="radio" name="status" value="out of stock"
+                            {{ old('status') == 'out of stock' ? 'checked' : '' }}>
+                        Out of Stock
+                    </label>
+
+                </div>
             </div>
-          </div>
+
+            <!-- IMAGE -->
+            <div class="form-section" style="margin-top:15px;">
+
+                <div class="section-title">Product Image</div>
+
+                <input type="file" name="image" accept="image/*" required>
+
+            </div>
+
         </div>
-        
-        <div class="form-actions">
-          <button type="button" class="btn-secondary" onclick="window.location.href='{{ url('admin/dashboard') }}'">Cancel</button>
-          <button type="submit" class="btn-primary">Create Product</button>
-        </div>
-      </form>
+
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-primary">Create Product</button>
+    </div>
+
+</form>
     </div>
   </div>
 </section>
